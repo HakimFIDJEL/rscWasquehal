@@ -5,6 +5,9 @@ import { TrophyCard } from '@/components/elements/TrophyCard';
 import { SponsorCard } from '@/components/elements/SponsorCard';
 import { Button } from '@/components/forms/Button';
 
+import  Carousel  from '@/components/elements/Carousel';
+import { Autoplay } from 'swiper/modules';
+
 export const metadata = {
     title: 'RSC Wasquehal - Club',
 };
@@ -12,6 +15,70 @@ export const metadata = {
 
 export default function Club()
 {
+    const palmaresSwiperOptions = {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        grid: {
+            rows: 2,
+            fill: 'row',
+        },
+        
+        // responsive
+        breakpoints: {
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 0,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 0,
+          },
+        },
+    
+        // navigation
+        navigation: {
+          nextEl: '.palmares .arrows__wrapper .arrow.right',
+          prevEl: '.palmares .arrows__wrapper .arrow.left',
+        },
+        
+      };
+
+    const sponsorSwiperOptions = {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        Autoplay: {
+            delay: 5000,
+        },
+        loop : true,
+
+        // responsive
+        breakpoints: {
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 0,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 0,
+          },
+        },
+    
+        // navigation
+        navigation: {
+          nextEl: '.sponsors .arrows__wrapper .arrow.right',
+          prevEl: '.sponsors .arrows__wrapper .arrow.left',
+        },
+        
+      };
+    
     return <main className="club">
 
         <section className="hero section">
@@ -46,33 +113,85 @@ export default function Club()
                 <div className="palmares__content fade-in-up" id="palmares__slick">
                     
                     
+                <Carousel options={palmaresSwiperOptions} >
+
                     <TrophyCard
-                        placement="1"
-                        title="Championnat du monde"
-                        season="2019 - 2020"
-                        team="Pré Nationale"
+                    placement="1"
+                    title="Championnat du monde"
+                    season="2019 - 2020"
+                    team="Pré Nationale"
                     />
 
                     <TrophyCard
-                        placement="3"
-                        title="Championnat du monde"
-                        season="2019 - 2020"
-                        team="Pré Nationale"
+                    placement="3"
+                    title="Championnat du monde"
+                    season="2019 - 2020"
+                    team="Pré Nationale"
                     />
 
                     <TrophyCard
-                        placement="2"
-                        title="Championnat de France"
-                        season="2019 - 2020"
-                        team="Pré Nationale"
+                    placement="2"
+                    title="Championnat de France"
+                    season="2019 - 2020"
+                    team="Pré Nationale"
                     />
 
                     <TrophyCard
-                        placement="4"
-                        title="Championnat du monde"
-                        season="2019 - 2020"
-                        team="Pré Nationale"
+                    placement="4"
+                    title="Championnat du monde"
+                    season="2019 - 2020"
+                    team="Pré Nationale"
                     />  
+                    <TrophyCard
+                    placement="4"
+                    title="Championnat du monde"
+                    season="2019 - 2020"
+                    team="Pré Nationale"
+                    />  
+                    <TrophyCard
+                    placement="4"
+                    title="Championnat du monde"
+                    season="2019 - 2020"
+                    team="Pré Nationale"
+                    />  
+                    <TrophyCard
+                    placement="4"
+                    title="Championnat du monde"
+                    season="2019 - 2020"
+                    team="Pré Nationale"
+                    />  
+                    <TrophyCard
+                    placement="4"
+                    title="Championnat du monde"
+                    season="2019 - 2020"
+                    team="Pré Nationale"
+                    />  
+                    <TrophyCard
+                    placement="4"
+                    title="Championnat du monde"
+                    season="2019 - 2020"
+                    team="Pré Nationale"
+                    />  
+                    <TrophyCard
+                    placement="4"
+                    title="Championnat du monde"
+                    season="2019 - 2020"
+                    team="Pré Nationale"
+                    />  
+                    <TrophyCard
+                    placement="4"
+                    title="Championnat du monde"
+                    season="2019 - 2020"
+                    team="Pré Nationale"
+                    />  
+                    <TrophyCard
+                    placement="4"
+                    title="Championnat du monde"
+                    season="2019 - 2020"
+                    team="Pré Nationale"
+                    />  
+
+                </Carousel>
         
         
         
@@ -273,37 +392,40 @@ export default function Club()
 
             <div className="sponsors__content fade-in-up" id="sponsors__slick">
 
+                <Carousel options={sponsorSwiperOptions} >
 
-                <SponsorCard
-                    imgSrc=""
-                    sponsor=""
-                    href=""
-                />
-                <SponsorCard
-                    imgSrc=""
-                    sponsor=""
-                    href=""
-                />
-                <SponsorCard
-                    imgSrc=""
-                    sponsor=""
-                    href=""
-                />
-                <SponsorCard
-                    imgSrc=""
-                    sponsor=""
-                    href=""
-                />
-                <SponsorCard
-                    imgSrc=""
-                    sponsor=""
-                    href=""
-                />
-                <SponsorCard
-                    imgSrc=""
-                    sponsor=""
-                    href=""
-                />
+                    <SponsorCard
+                        imgSrc=""
+                        sponsor=""
+                        href=""
+                    />
+                    <SponsorCard
+                        imgSrc=""
+                        sponsor=""
+                        href=""
+                    />
+                    <SponsorCard
+                        imgSrc=""
+                        sponsor=""
+                        href=""
+                    />
+                    <SponsorCard
+                        imgSrc=""
+                        sponsor=""
+                        href=""
+                    />
+                    <SponsorCard
+                        imgSrc=""
+                        sponsor=""
+                        href=""
+                    />
+                    <SponsorCard
+                        imgSrc=""
+                        sponsor=""
+                        href=""
+                    />
+
+                </Carousel>
 
             
 

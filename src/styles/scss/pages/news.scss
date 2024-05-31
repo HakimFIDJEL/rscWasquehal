@@ -113,6 +113,17 @@ main.news-index
                     }
                 }
 
+                @include respond('mobile')
+                {
+                    button
+                    {
+                        position: absolute;
+                        right : 8px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+
                 
             }
 
@@ -234,14 +245,13 @@ main.news-index
                 .news__wrapper 
                 {
                     margin: 60px 0;
-                    .news__container 
-                    {
+                    display: flex;
+                    align-items :flex-start;
+                    justify-content: space-between;
+                    gap: 40px;
+                    flex-wrap: wrap;
+                    
 
-                        display: flex;
-                        align-items :flex-start;
-                        justify-content: space-between;
-                        gap: 40px;
-                        flex-wrap: wrap;
                         .news 
                         {
                             width: 400px;
@@ -249,9 +259,11 @@ main.news-index
                             flex-direction: column;
                             gap: 24px;
 
+                            margin-bottom: 64px;
+
                             @include respond(tablet)
                             {
-                                width: 46%;
+                                width: 100%;
                                 gap: 0;
                             }
                             @include respond(mobile)
@@ -306,7 +318,7 @@ main.news-index
                                 }
                             }
                         }
-                    }
+                    
 
 
                     
@@ -337,13 +349,15 @@ main.news-index
                         overflow: hidden;
     
                         transition: 0.4s $animation;
+
+                        flex-shrink: 0;
     
                         .path-fill
                         {fill: $typo;}
                         .path-stroke
                         {stroke: $typo;}
     
-                        &.slick-disabled
+                        &.swiper-button-disabled
                         {
                             background-color: $typo;
                             outline : 1px solid $disabled;
@@ -354,7 +368,7 @@ main.news-index
                         }
     
                         // if hover and not disabled
-                        &:not(.slick-disabled):hover 
+                        &:not(.swiper-button-disabled):hover 
                         {
                             background-color: $background-2;
                             outline: 1px solid $background-2;
@@ -367,50 +381,38 @@ main.news-index
                     .buttons__container
                     {
 
-                        ul.buttons 
+                        width: auto !important;
+                        text-align: center;
+
+                    
+                        span
                         {
-                            display: flex;
-                            gap: 20px;
-                            li 
-                            {
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                
-                                button
-                                {
-                                    cursor: pointer;
-                                    background-color: $action;
-                                    outline: 1px solid $action;
-                                    border: none;
-                                    font-size: 16px;
-                                    
-                                    padding: 6px 20px; 
-                                    box-sizing: border-box;
-                                    border-radius: 14px;
-                                    overflow: hidden;
-                
-                                    transition: 0.4s $animation;
+                            cursor: pointer;
+                            background-color: $action;
+                            outline: 1px solid $action;
+                            border: none;
+                            font-size: 16px;
+                            
+                            padding: 6px 20px; 
+                            box-sizing: border-box;
+                            border-radius: 14px;
+                            overflow: hidden;
+        
+                            transition: 0.4s $animation;
 
-                                    color: white;
-                                    font-family: 'Montserrat';
+                            color: white;
+                            font-family: 'Montserrat';
 
-                                    &:hover 
-                                    {
-                                        background-color: $background-2;
-                                        outline: 1px solid $background-2;
-                                    }
-                                }
-                                
+                           
+                        }
+                        
 
 
-                                &.slick-active button
-                                {
-                                    background-color: $typo;
-                                    outline : 1px solid $disabled;
-                                    color: $background-2;
-                                }
-                            }
+                        &.swiper-pagination-bullet-active span
+                        {
+                            background-color: $typo;
+                            outline : 1px solid $disabled;
+                            color: $background-2;
                         }
                     }
             }
@@ -583,7 +585,7 @@ main.news-show
                         position: absolute;
                         
                         top: 50%;
-                        z-index: 1;
+                        z-index: 2;
 
                         &.left
                         {
@@ -615,7 +617,7 @@ main.news-show
                         .path-stroke
                         {stroke: $typo;}
     
-                        &.slick-disabled
+                        &.swiper-button-disabled
                         {
                             background-color: $typo;
                             outline : 1px solid $disabled;
@@ -626,7 +628,7 @@ main.news-show
                         }
     
                         // if hover and not disabled
-                        &:not(.slick-disabled):hover 
+                        &:not(.swiper-button-disabled):hover 
                         {
                             background-color: $background-2;
                             outline: 1px solid $background-2;

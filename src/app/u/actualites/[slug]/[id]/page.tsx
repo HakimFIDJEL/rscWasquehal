@@ -9,12 +9,48 @@ import { Button } from "@/components/forms/Button";
 import { Arrow } from "@/components/elements/Arrow";
 import { ActuThumb } from "@/components/elements/ActuThumb";
 
-
+import  Carousel  from '@/components/elements/Carousel';
 
 export default function Show() 
 {
   const params = useParams();
   const { slug, id } = params;
+
+  const actuSwiperOptions = {
+    spaceBetween: 10,
+    slidesPerView: 3,
+
+   
+    
+    // loop: true,
+    // responsive
+    breakpoints: {
+        0: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        // center mode
+        centeredSlides: true,
+        
+        },
+        768: {
+        slidesPerView: 2,
+        spaceBetween: 0,
+        },
+        1024: {
+        slidesPerView: 3,
+        spaceBetween: 0,
+        },
+    },
+
+    // navigation
+    navigation: {
+        nextEl: '.news .news__carroussel .arrow.right',
+        prevEl: '.news .news__carroussel .arrow.left',
+    },
+
+    
+
+};
 
   return <main className="news-show">
 
@@ -61,6 +97,8 @@ export default function Show()
 
               <div id="news__carroussel__slick">
                 <div className="news__thumb__wrapper">
+
+                  <Carousel options={actuSwiperOptions}>
                     <ActuThumb 
                         src=""
                         alt=""
@@ -77,6 +115,7 @@ export default function Show()
                         src=""
                         alt=""
                     />
+                  </Carousel>
                 </div>
               </div>
 

@@ -3,14 +3,14 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
-// import 'swiper/modules/navigation.min.css';
-// import 'swiper/modules/pagination.min.css';
-// import 'swiper/modules/scrollbar.min.css';
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay, Grid } from 'swiper/modules';
 
 const Carousel = ({ children, options }) => {
+
+
+  
   return (
-    <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]} {...options}>
+    <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, Grid]} {...options}>
       {React.Children.map(children, (child, index) => (
         <SwiperSlide key={index}>{child}</SwiperSlide>
       ))}
@@ -19,3 +19,5 @@ const Carousel = ({ children, options }) => {
 };
 
 export default Carousel;
+
+

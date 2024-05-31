@@ -101,7 +101,11 @@ main.regles
 
                     @include respond(tablet)
                     {
-                        padding: 0px;
+                        padding: 0 32px;
+                    }
+                    @include respond(mobile)
+                    {
+                        padding: 0;
                     }
                 }
                 .circle

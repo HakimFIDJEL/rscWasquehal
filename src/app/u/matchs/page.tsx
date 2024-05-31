@@ -4,6 +4,7 @@ import { MatchCard } from '@/components/elements/MatchCard';
 import { Arrow } from '@/components/elements/Arrow';
 import { Button } from '@/components/forms/Button';
 
+import  Carousel  from '@/components/elements/Carousel';
 
 export const metadata = {
   title: 'RSC Wasquehal - Matchs',
@@ -12,7 +13,71 @@ export const metadata = {
 export default function Matchs()
 {
 
- 
+  const matchsToComeSwiperOptions = {
+    spaceBetween: 0,
+    slidesPerView: 3,
+
+    grid: {
+        rows: 2,
+        fill: 'row',
+    },
+
+    // responsive
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 0,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 0,
+      },
+    },
+
+    // navigation
+    navigation: {
+      nextEl: '.matchsToCome .arrows__wrapper .arrow.right',
+      prevEl: '.matchsToCome .arrows__wrapper .arrow.left',
+    },
+    
+  };
+  const matchsLastSwiperOptions = {
+    spaceBetween: 0,
+    slidesPerView: 3,
+
+    grid: {
+        rows: 2,
+        fill: 'row',
+    },
+
+
+    // responsive
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 0,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 0,
+      },
+    },
+
+    // navigation
+    navigation: {
+      nextEl: '.matchsLast .arrows__wrapper .arrow.right',
+      prevEl: '.matchsLast .arrows__wrapper .arrow.left',
+    },
+    
+  };
 
   return <main className='matchs'>
     <section className="hero section">
@@ -44,85 +109,9 @@ export default function Matchs()
 
 
 
-        <div className="matchs__content fade-in-up" id="matchsToCome__slick">
+        <div className="matchs__content fade-in-up">
           
-          <MatchCard 
-            team1="RSC Wasquehal"
-            team2="SCRA"
-            team1Score="4"
-            team2Score="2"
-            team1Logo=""
-            team2Logo=""
-            date="2023-03-05"
-            category="U20"
-            exterieur={true}
-          />
-          <MatchCard 
-            team1="RSC Wasquehal"
-            team2="SCRA"
-            team1Score="4"
-            team2Score="2"
-            team1Logo=""
-            team2Logo=""
-            date="2023-03-05"
-            category="U20"
-            exterieur={false}
-          />
-          <MatchCard 
-            team1="RSC Wasquehal"
-            team2="SCRA"
-            team1Score="4"
-            team2Score="2"
-            team1Logo=""
-            team2Logo=""
-            date="2023-03-05"
-            category="U20"
-            exterieur={true}
-          />
-          <MatchCard 
-            team1="RSC Wasquehal"
-            team2="SCRA"
-            team1Score="4"
-            team2Score="2"
-            team1Logo=""
-            team2Logo=""
-            date="2023-03-05"
-            category="U20"
-            exterieur={true}
-          />
-          
-          
-
-
-
-
-        </div>
-
-
-      </div>
-    </section>
-
-
-    <section className="matchsLast section">
-        <div className="matchs__container container">
-  
-  
-          <div className="matchs__title__wrapper">
-            <div className="title">
-              <div className="title__bar"></div>
-              <h1>Les derniers matchs</h1>
-            </div>  
-            <div className="arrows__wrapper">
-              <Arrow direction="left"/>
-              <Arrow direction="right"/>
-            </div>
-          </div>
-  
-  
-  
-  
-          <div className="matchs__content fade-in-up" id="matchsLast__slick">
-            
+          <Carousel options={matchsToComeSwiperOptions} >
             <MatchCard 
               team1="RSC Wasquehal"
               team2="SCRA"
@@ -167,6 +156,141 @@ export default function Matchs()
               category="U20"
               exterieur={true}
             />
+            <MatchCard 
+              team1="RSC Wasquehal"
+              team2="SCRA"
+              team1Score="4"
+              team2Score="2"
+              team1Logo=""
+              team2Logo=""
+              date="2023-03-05"
+              category="U20"
+              exterieur={false}
+            />
+            <MatchCard 
+              team1="RSC Wasquehal"
+              team2="SCRA"
+              team1Score="4"
+              team2Score="2"
+              team1Logo=""
+              team2Logo=""
+              date="2023-03-05"
+              category="U20"
+              exterieur={true}
+            />
+            <MatchCard 
+              team1="RSC Wasquehal"
+              team2="SCRA"
+              team1Score="4"
+              team2Score="2"
+              team1Logo=""
+              team2Logo=""
+              date="2023-03-05"
+              category="U20"
+              exterieur={true}
+            />
+          </Carousel>
+          
+          
+
+
+
+
+        </div>
+
+
+      </div>
+    </section>
+
+
+    <section className="matchsLast section">
+        <div className="matchs__container container">
+  
+  
+          <div className="matchs__title__wrapper">
+            <div className="title">
+              <div className="title__bar"></div>
+              <h1>Les derniers matchs</h1>
+            </div>  
+            <div className="arrows__wrapper">
+              <Arrow direction="left"/>
+              <Arrow direction="right"/>
+            </div>
+          </div>
+  
+  
+  
+  
+          <div className="matchs__content fade-in-up" id="matchsLast__slick">
+            
+            <Carousel options={matchsLastSwiperOptions} >
+              <MatchCard 
+                team1="RSC Wasquehal"
+                team2="SCRA"
+                team1Score="4"
+                team2Score="2"
+                team1Logo=""
+                team2Logo=""
+                date="2023-03-05"
+                category="U20"
+                exterieur={true}
+              />
+              <MatchCard 
+                team1="RSC Wasquehal"
+                team2="SCRA"
+                team1Score="4"
+                team2Score="2"
+                team1Logo=""
+                team2Logo=""
+                date="2023-03-05"
+                category="U20"
+                exterieur={false}
+              />
+              <MatchCard 
+                team1="RSC Wasquehal"
+                team2="SCRA"
+                team1Score="4"
+                team2Score="2"
+                team1Logo=""
+                team2Logo=""
+                date="2023-03-05"
+                category="U20"
+                exterieur={true}
+              />
+              <MatchCard 
+                team1="RSC Wasquehal"
+                team2="SCRA"
+                team1Score="4"
+                team2Score="2"
+                team1Logo=""
+                team2Logo=""
+                date="2023-03-05"
+                category="U20"
+                exterieur={true}
+              />
+              <MatchCard 
+                team1="RSC Wasquehal"
+                team2="SCRA"
+                team1Score="4"
+                team2Score="2"
+                team1Logo=""
+                team2Logo=""
+                date="2023-03-05"
+                category="U20"
+                exterieur={true}
+              />
+              <MatchCard 
+                team1="RSC Wasquehal"
+                team2="SCRA"
+                team1Score="4"
+                team2Score="2"
+                team1Logo=""
+                team2Logo=""
+                date="2023-03-05"
+                category="U20"
+                exterieur={true}
+              />
+            </Carousel>
             
   
   

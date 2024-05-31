@@ -257,7 +257,7 @@ main.home
                         .path-stroke
                         {stroke: $typo;}
     
-                        &.slick-disabled
+                        &.swiper-button-disabled
                         {
                             background-color: $typo;
                             outline : 1px solid $disabled;
@@ -268,7 +268,7 @@ main.home
                         }
     
                         // if hover and not disabled
-                        &:not(.slick-disabled):hover 
+                        &:not(.swiper-button-disabled):hover 
                         {
                             background-color: $background-2;
                             outline: 1px solid $background-2;
@@ -574,7 +574,7 @@ main.home
                         .path-stroke
                         {stroke: $typo;}
     
-                        &.slick-disabled
+                        &.swiper-button-disabled
                         {
                             background-color: $typo;
                             outline : 1px solid $disabled;
@@ -585,7 +585,7 @@ main.home
                         }
     
                         // if hover and not disabled
-                        &:not(.slick-disabled):hover 
+                        &:not(.swiper-button-disabled):hover 
                         {
                             background-color: $background-2;
                             outline: 1px solid $background-2;
@@ -859,7 +859,7 @@ main.home
                         .path-stroke
                         {stroke: $typo;}
     
-                        &.slick-disabled
+                        &.swiper-button-disabled
                         {
                             background-color: $typo;
                             outline : 1px solid $disabled;
@@ -870,7 +870,7 @@ main.home
                         }
     
                         // if hover and not disabled
-                        &:not(.slick-disabled):hover 
+                        &:not(.swiper-button-disabled):hover 
                         {
                             background-color: $background-2;
                             outline: 1px solid $background-2;
@@ -1111,7 +1111,7 @@ main.home
                         .path-stroke
                         {stroke: $typo;}
     
-                        &.slick-disabled
+                        &.swiper-button-disabled
                         {
                             background-color: $typo;
                             outline : 1px solid $disabled;
@@ -1122,7 +1122,7 @@ main.home
                         }
     
                         // if hover and not disabled
-                        &:not(.slick-disabled):hover 
+                        &:not(.swiper-button-disabled):hover 
                         {
                             background-color: $background-2;
                             outline: 1px solid $background-2;
@@ -1145,17 +1145,12 @@ main.home
                 width: calc(100% + 50px);
                 margin-left: -25px;
     
-                .slick-list
-                {
-                    width: 100%;
-                }
-    
+            
     
                 .palmares__wrapper 
                 {
                     padding: 20px 25px; 
                     box-sizing: border-box;
-                    width: 25%;
                     .trophy
                     {
                         display: flex;

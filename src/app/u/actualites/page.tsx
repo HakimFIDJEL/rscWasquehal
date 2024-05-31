@@ -6,6 +6,7 @@ import { Arrow } from '@/components/elements/Arrow';
 import { Button } from '@/components/forms/Button';
 import { Input } from '@/components/forms/Input';
 
+import  Carousel  from '@/components/elements/Carousel';
 
 export const metadata = {
   title: 'RSC Wasquehal - Actualites',
@@ -14,6 +15,47 @@ export const metadata = {
 
 export default function Actualites()
 {
+
+  const actuSwiperOptions = {
+    spaceBetween: 0,
+    slidesPerView: 3,
+
+    grid: {
+        rows: 2,
+        fill: 'row',
+    },
+
+    // responsive
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 0,
+      },
+    },
+
+    // navigation
+    navigation: {
+      nextEl: '.news .news__arrows__buttons .arrow.right',
+      prevEl: '.news .news__arrows__buttons .arrow.left',
+    },
+
+    // pagination
+    pagination: {
+      el: '.news .news__arrows__buttons .buttons__container',
+      clickable: true,
+      
+    },
+
+    
+  };
 
   return <main className="news-index">
     <section className="hero section">
@@ -91,207 +133,188 @@ export default function Actualites()
               <div className="news__wrapper">
 
 
-                <div className="news__container">
 
-                  <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
+                  <Carousel options={actuSwiperOptions} >
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
                   
-                  <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-                  <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-                  <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-                  <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-                  <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-
-                  
-
-
-
-
-                </div>
-                <div className="news__container">
-
-
-                  <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-                  <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-                  <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-                  <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-                  <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-                  <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
 
 
-
-
-                </div>
-                <div className="news__container">
-
-
-                <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-                <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-                <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-                <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-                <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-                <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
-
-
-
-
-                </div>
-                <div className="news__container">
 
 
                   <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
                   <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
                   <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
                   <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
                   <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
                   <ActuCard
-                    imgSrc=""
-                    title="Titre de l'actualité"
-                    date="2023-11-11"
-                    href="/"
-                  />
-                  
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
 
 
 
 
-                </div>
+
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                    
+                    <ActuCard
+                      imgSrc=""
+                      title="Titre de l'actualité"
+                      date="2023-11-11"
+                      href="/"
+                    />
+                  
+                  </Carousel>
+
+
 
 
               </div>

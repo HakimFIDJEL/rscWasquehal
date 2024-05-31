@@ -19,14 +19,44 @@ export const metadata = {
 export default function Home()
 {
 
-  
+  const actuSwiperOptions = {
+    spaceBetween: 0,
+    slidesPerView: 1,
+    // navigation
+    navigation: {
+      nextEl: '.actualites .arrows__wrapper .arrow.right',
+      prevEl: '.actualites .arrows__wrapper .arrow.left',
+    },
+  };
+
+  const galerieSwiperOptions = {
+    spaceBetween: 0,
+    slidesPerView: 4,
+    // navigation
+    navigation: {
+      nextEl: '.galeries .arrows__wrapper .arrow.right',
+      prevEl: '.galeries .arrows__wrapper .arrow.left',
+    },
+    // responsive
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 0,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 0,
+      },
+    },
+  };
 
   const matchSwiperOptions = {
     spaceBetween: 0,
     slidesPerView: 3,
-    autoplay : {
-      delay: 1000,
-    },
     // responsive
     breakpoints: {
       0: {
@@ -44,6 +74,37 @@ export default function Home()
     },
 
     // navigation
+    navigation: {
+      nextEl: '.matchs .arrows__wrapper .arrow.right',
+      prevEl: '.matchs .arrows__wrapper .arrow.left',
+    },
+    
+  };
+
+  const palmaresSwiperOptions = {
+    spaceBetween: 10,
+    slidesPerView: 4,
+    // responsive
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 0,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 0,
+      },
+    },
+
+    // navigation
+    navigation: {
+      nextEl: '.palmares .arrows__wrapper .arrow.right',
+      prevEl: '.palmares .arrows__wrapper .arrow.left',
+    },
     
   };
 
@@ -128,54 +189,54 @@ export default function Home()
 
           <div className="otherActus fade-in-right">
 
+            <Carousel options={actuSwiperOptions} >
+              <div className="actualites__wrapper">
 
-            <div className="actualites__wrapper">
-
-              <HomeActuCard
-                imageSrc=""
-                title="The title of the news"
-                text="The description of the new which can be a bit long but no problem because if it overflow, the three dots will take place"
-                date="2023-12-11"
-              />
-              <HomeActuCard
-                imageSrc=""
-                title="The title of the news"
-                text="The description of the new which can be a bit long but no problem because if it overflow, the three dots will take place"
-                date="2023-12-11"
-              />
-              <HomeActuCard
-                imageSrc=""
-                title="The title of the news"
-                text="The description of the new which can be a bit long but no problem because if it overflow, the three dots will take place"
-                date="2023-12-11"
-              />
-              
+                <HomeActuCard
+                  imageSrc=""
+                  title="The title of the news"
+                  text="The description of the new which can be a bit long but no problem because if it overflow, the three dots will take place"
+                  date="2023-12-11"
+                />
+                <HomeActuCard
+                  imageSrc=""
+                  title="The title of the news"
+                  text="The description of the new which can be a bit long but no problem because if it overflow, the three dots will take place"
+                  date="2023-12-11"
+                />
+                <HomeActuCard
+                  imageSrc=""
+                  title="The title of the news"
+                  text="The description of the new which can be a bit long but no problem because if it overflow, the three dots will take place"
+                  date="2023-12-11"
+                />
+                
 
 
-            </div>
-            <div className="actualites__wrapper">
+              </div>
+              <div className="actualites__wrapper">
 
-              <HomeActuCard
-                imageSrc=""
-                title="The title of the news"
-                text="The description of the new which can be a bit long but no problem because if it overflow, the three dots will take place"
-                date="2023-12-11"
-              />
-              <HomeActuCard
-                imageSrc=""
-                title="The title of the news"
-                text="The description of the new which can be a bit long but no problem because if it overflow, the three dots will take place"
-                date="2023-12-11"
-              />
-              <HomeActuCard
-                imageSrc=""
-                title="The title of the news"
-                text="The description of the new which can be a bit long but no problem because if it overflow, the three dots will take place"
-                date="2023-12-11"
-              />
+                <HomeActuCard
+                  imageSrc=""
+                  title="The title of the news"
+                  text="The description of the new which can be a bit long but no problem because if it overflow, the three dots will take place"
+                  date="2023-12-11"
+                />
+                <HomeActuCard
+                  imageSrc=""
+                  title="The title of the news"
+                  text="The description of the new which can be a bit long but no problem because if it overflow, the three dots will take place"
+                  date="2023-12-11"
+                />
+                <HomeActuCard
+                  imageSrc=""
+                  title="The title of the news"
+                  text="The description of the new which can be a bit long but no problem because if it overflow, the three dots will take place"
+                  date="2023-12-11"
+                />
 
-            </div>
-
+              </div>
+            </Carousel>
 
 
 
@@ -216,7 +277,7 @@ export default function Home()
 
 
         <div className="matchs__content fade-in-up">
-{/* 
+
           <Carousel options={matchSwiperOptions} >
 
             <MatchCard 
@@ -286,7 +347,7 @@ export default function Home()
               exterieur={true}
             />
 
-          </Carousel> */}
+          </Carousel>
 
 
 
@@ -331,54 +392,55 @@ export default function Home()
 
 
 
-        <div className="galeries__content fade-in-up" id="galeries__slick">
+        <div className="galeries__content fade-in-up">
           
-
-          <GalerieCard 
-            src=""
-            description="Une description un peu en détail mais pas trop non plus parce que tu connais"
-            date="2023-12-11"
-          />
-          <GalerieCard 
-            src=""
-            description="Une description un peu en détail mais pas trop non plus parce que tu connais"
-            date="2023-12-11"
-          />
-          <GalerieCard 
-            src=""
-            description="Une description un peu en détail mais pas trop non plus parce que tu connais"
-            date="2023-12-11"
-          />
-          <GalerieCard 
-            src=""
-            description="Une description un peu en détail mais pas trop non plus parce que tu connais"
-            date="2023-12-11"
-          />
-          <GalerieCard 
-            src=""
-            description="Une description un peu en détail mais pas trop non plus parce que tu connais"
-            date="2023-12-11"
-          />
-          <GalerieCard 
-            src=""
-            description="Une description un peu en détail mais pas trop non plus parce que tu connais"
-            date="2023-12-11"
-          />
-          <GalerieCard 
-            src=""
-            description="Une description un peu en détail mais pas trop non plus parce que tu connais"
-            date="2023-12-11"
-          />
-          <GalerieCard 
-            src=""
-            description="Une description un peu en détail mais pas trop non plus parce que tu connais"
-            date="2023-12-11"
-          />
-          <GalerieCard 
-            src=""
-            description="Une description un peu en détail mais pas trop non plus parce que tu connais"
-            date="2023-12-11"
-          />
+          <Carousel options={galerieSwiperOptions} >
+            <GalerieCard 
+              src=""
+              description="Une description un peu en détail mais pas trop non plus parce que tu connais"
+              date="2023-12-11"
+            />
+            <GalerieCard 
+              src=""
+              description="Une description un peu en détail mais pas trop non plus parce que tu connais"
+              date="2023-12-11"
+            />
+            <GalerieCard 
+              src=""
+              description="Une description un peu en détail mais pas trop non plus parce que tu connais"
+              date="2023-12-11"
+            />
+            <GalerieCard 
+              src=""
+              description="Une description un peu en détail mais pas trop non plus parce que tu connais"
+              date="2023-12-11"
+            />
+            <GalerieCard 
+              src=""
+              description="Une description un peu en détail mais pas trop non plus parce que tu connais"
+              date="2023-12-11"
+            />
+            <GalerieCard 
+              src=""
+              description="Une description un peu en détail mais pas trop non plus parce que tu connais"
+              date="2023-12-11"
+            />
+            <GalerieCard 
+              src=""
+              description="Une description un peu en détail mais pas trop non plus parce que tu connais"
+              date="2023-12-11"
+            />
+            <GalerieCard 
+              src=""
+              description="Une description un peu en détail mais pas trop non plus parce que tu connais"
+              date="2023-12-11"
+            />
+            <GalerieCard 
+              src=""
+              description="Une description un peu en détail mais pas trop non plus parce que tu connais"
+              date="2023-12-11"
+            />
+          </Carousel>
 
         
           
@@ -422,35 +484,51 @@ export default function Home()
 
 
 
-        <div className="palmares__content fade-in-up" id="palmares__slick">
+        <div className="palmares__content fade-in-up">
 
-          <TrophyCard
-            placement="1"
-            title="Championnat du monde"
-            season="2019 - 2020"
-            team="Pré Nationale"
-          />
+          <Carousel options={palmaresSwiperOptions} >
 
-          <TrophyCard
-            placement="3"
-            title="Championnat du monde"
-            season="2019 - 2020"
-            team="Pré Nationale"
-          />
+            <TrophyCard
+              placement="1"
+              title="Championnat du monde"
+              season="2019 - 2020"
+              team="Pré Nationale"
+            />
 
-          <TrophyCard
-            placement="2"
-            title="Championnat de France"
-            season="2019 - 2020"
-            team="Pré Nationale"
-          />
+            <TrophyCard
+              placement="3"
+              title="Championnat du monde"
+              season="2019 - 2020"
+              team="Pré Nationale"
+            />
 
-          <TrophyCard
-            placement="4"
-            title="Championnat du monde"
-            season="2019 - 2020"
-            team="Pré Nationale"
-          />  
+            <TrophyCard
+              placement="2"
+              title="Championnat de France"
+              season="2019 - 2020"
+              team="Pré Nationale"
+            />
+
+            <TrophyCard
+              placement="4"
+              title="Championnat du monde"
+              season="2019 - 2020"
+              team="Pré Nationale"
+            />  
+            <TrophyCard
+              placement="4"
+              title="Championnat du monde"
+              season="2019 - 2020"
+              team="Pré Nationale"
+            />  
+            <TrophyCard
+              placement="4"
+              title="Championnat du monde"
+              season="2019 - 2020"
+              team="Pré Nationale"
+            />  
+
+          </Carousel>
           
         
         </div>

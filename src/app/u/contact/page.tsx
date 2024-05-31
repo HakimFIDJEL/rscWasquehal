@@ -6,8 +6,48 @@ import { Button } from '@/components/forms/Button';
 import { ActivityCard } from '@/components/elements/ActivityCard';
 import { Arrow } from '@/components/elements/Arrow';
 
+import  Carousel  from '@/components/elements/Carousel';
+
 export default function Contact()
 {
+    const contactSwiperOptions = {
+        spaceBetween: 10,
+        slidesPerView: 3,
+
+        grid: {
+            rows: 2,
+            fill: 'row',
+        },
+        
+        breakpoints: {
+            0: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            },
+            768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+            },
+            1024: {
+            slidesPerView: 3,
+            spaceBetween: 0,
+            },
+        },
+
+        // navigation
+        navigation: {
+            nextEl: '.activities .activities__arrows__buttons .arrow.right',
+            prevEl: '.activities .activities__arrows__buttons .arrow.left',
+        },
+
+        // pagination
+        pagination: {
+            el: '.activities .activities__arrows__buttons .buttons__container',
+            clickable: true,
+        },
+    };
+
+
     return <main className="contact">
         <section className="hero section">
             <div className="hero__container">
@@ -148,84 +188,79 @@ export default function Contact()
                 <div className="activities__wrapper" id="activites__slick__carroussel">
 
 
-                    <div className="activities__container">
-
-                        <ActivityCard 
-                            imgSrc=""
-                            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
-                            subtitle="Hôtel"
-                        />
-                        <ActivityCard 
-                            imgSrc=""
-                            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
-                            subtitle="Hôtel"
-                        />
-                        <ActivityCard 
-                            imgSrc=""
-                            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
-                            subtitle="Hôtel"
-                        />
-                        <ActivityCard 
-                            imgSrc=""
-                            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
-                            subtitle="Hôtel"
-                        />
-                        <ActivityCard 
-                            imgSrc=""
-                            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
-                            subtitle="Hôtel"
-                        />
-                        <ActivityCard 
-                            imgSrc=""
-                            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
-                            subtitle="Hôtel"
-                        />
+                        <Carousel options={contactSwiperOptions}>
+                            <ActivityCard 
+                                imgSrc=""
+                                title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
+                                subtitle="Hôtel"
+                            />
+                            <ActivityCard 
+                                imgSrc=""
+                                title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
+                                subtitle="Hôtel"
+                            />
+                            <ActivityCard 
+                                imgSrc=""
+                                title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
+                                subtitle="Hôtel"
+                            />
+                            <ActivityCard 
+                                imgSrc=""
+                                title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
+                                subtitle="Hôtel"
+                            />
+                            <ActivityCard 
+                                imgSrc=""
+                                title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
+                                subtitle="Hôtel"
+                            />
+                            <ActivityCard 
+                                imgSrc=""
+                                title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
+                                subtitle="Hôtel"
+                            />
 
              
 
 
 
 
-                    </div>
-                    <div className="activities__container">
 
-
-                        <ActivityCard 
-                            imgSrc=""
-                            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
-                            subtitle="Hôtel"
-                        />
-                        <ActivityCard 
-                            imgSrc=""
-                            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
-                            subtitle="Hôtel"
-                        />
-                        <ActivityCard 
-                            imgSrc=""
-                            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
-                            subtitle="Hôtel"
-                        />
-                        <ActivityCard 
-                            imgSrc=""
-                            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
-                            subtitle="Hôtel"
-                        />
-                        <ActivityCard 
-                            imgSrc=""
-                            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
-                            subtitle="Hôtel"
-                        />
-                        <ActivityCard 
-                            imgSrc=""
-                            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
-                            subtitle="Hôtel"
-                        />
+                            <ActivityCard 
+                                imgSrc=""
+                                title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
+                                subtitle="Hôtel"
+                            />
+                            <ActivityCard 
+                                imgSrc=""
+                                title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
+                                subtitle="Hôtel"
+                            />
+                            <ActivityCard 
+                                imgSrc=""
+                                title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
+                                subtitle="Hôtel"
+                            />
+                            <ActivityCard 
+                                imgSrc=""
+                                title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
+                                subtitle="Hôtel"
+                            />
+                            <ActivityCard 
+                                imgSrc=""
+                                title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
+                                subtitle="Hôtel"
+                            />
+                            <ActivityCard 
+                                imgSrc=""
+                                title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. la suite c'est ici ! Ah apparemment il n'ya pas assez de texte, quel dommage !!"
+                                subtitle="Hôtel"
+                            />
                     
+                        </Carousel>
 
 
 
-
-                    </div>
                 
 
                 </div>

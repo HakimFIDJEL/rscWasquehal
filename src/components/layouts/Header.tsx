@@ -115,11 +115,11 @@ export function Header()
                 <div className="mobile__nav__container">
             
                     <ul className="mobile__nav__list">
-                        <li className="mobile__nav__list__item"><a href="/matchs">Matchs</a></li>
-                        <li className="mobile__nav__list__item"><a href="/actualites">Actualités</a></li>
-                        <li className="mobile__nav__list__item"><a href="/galerie">Galerie</a></li>
-                        <li className="mobile__nav__list__item"><a href="/club">Club</a></li>
-                        <li className="mobile__nav__list__item"><a href="/regles">Règles</a></li>
+                        <li className="mobile__nav__list__item"><a href="/u/matchs">Matchs</a></li>
+                        <li className="mobile__nav__list__item"><a href="/u/actualites">Actualités</a></li>
+                        <li className="mobile__nav__list__item"><a href="/u/galeries">Galerie</a></li>
+                        <li className="mobile__nav__list__item"><a href="/u/club">Club</a></li>
+                        <li className="mobile__nav__list__item"><a href="/u/regles">Règles</a></li>
                         <li className="mobile__nav__list__item">
                             <Button 
                                 className="primary-outline-button" 
