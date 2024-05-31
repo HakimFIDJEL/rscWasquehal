@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useEffect, useRef } from 'react';
 // import "../scripts/home.js";
 
 import { HomeInfoCard } from '@/components/elements/HomeInfoCard';
@@ -10,12 +10,44 @@ import { TrophyCard } from '@/components/elements/TrophyCard';
 import { Arrow } from '@/components/elements/Arrow';
 import { Button } from '@/components/forms/Button';
 
+import  Carousel  from '@/components/elements/Carousel';
+
 export const metadata = {
   title: 'RSC Wasquehal - Accueil',
 };
 
 export default function Home()
 {
+
+  
+
+  const matchSwiperOptions = {
+    spaceBetween: 0,
+    slidesPerView: 3,
+    autoplay : {
+      delay: 1000,
+    },
+    // responsive
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 0,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 0,
+      },
+    },
+
+    // navigation
+    
+  };
+
+
   return <main className='home'>
     <section className="hero section">
       <div className="hero__container container">
@@ -94,7 +126,8 @@ export default function Home()
 
           </div>
 
-          <div className="otherActus fade-in-right" id="actualites__slick">
+          <div className="otherActus fade-in-right">
+
 
             <div className="actualites__wrapper">
 
@@ -145,6 +178,7 @@ export default function Home()
 
 
 
+
           </div>
 
 
@@ -163,7 +197,7 @@ export default function Home()
       </div>
     </section>
 
-    <section id="home-matchs" className="matchs section">
+    <section className="matchs section">
       <div className="matchs__container container">
 
 
@@ -181,74 +215,78 @@ export default function Home()
 
 
 
-        <div className="matchs__content fade-in-up" id="matchs__slick">
+        <div className="matchs__content fade-in-up">
+{/* 
+          <Carousel options={matchSwiperOptions} >
 
-          <MatchCard 
-            team1="RSC Wasquehal"
-            team2="SCRA"
-            team1Score="4"
-            team2Score="2"
-            team1Logo=""
-            team2Logo=""
-            date="2023-03-05"
-            category="U20"
-            exterieur={true}
-          />
-          <MatchCard 
-            team1="RSC Wasquehal"
-            team2="SCRA"
-            team1Score="4"
-            team2Score="2"
-            team1Logo=""
-            team2Logo=""
-            date="2023-03-05"
-            category="U20"
-            exterieur={false}
-          />
-          <MatchCard 
-            team1="RSC Wasquehal"
-            team2="SCRA"
-            team1Score="4"
-            team2Score="2"
-            team1Logo=""
-            team2Logo=""
-            date="2023-03-05"
-            category="U20"
-            exterieur={true}
-          />
-          <MatchCard 
-            team1="RSC Wasquehal"
-            team2="SCRA"
-            team1Score="4"
-            team2Score="2"
-            team1Logo=""
-            team2Logo=""
-            date="2023-03-05"
-            category="U20"
-            exterieur={true}
-          />
-          <MatchCard 
-            team1="RSC Wasquehal"
-            team2="SCRA"
-            team1Score="4"
-            team2Score="2"
-            team1Logo=""
-            team2Logo=""
-            date="2023-03-05"
-            category="U20"
-            exterieur={true}
-          />
-          <MatchCard 
-            team1="RSC Wasquehal"
-            team2="SCRA"
-            team1Score="4"
-            team2Score="2"
-            team1Logo=""
-            team2Logo=""
-            date="2023-03-05"
-            category="U20"
-            exterieur={true}
-          />
+            <MatchCard 
+              team1="RSC Wasquehal"
+              team2="SCRA"
+              team1Score="4"
+              team2Score="2"
+              team1Logo=""
+              team2Logo=""
+              date="2023-03-05"
+              category="U20"
+              exterieur={true}
+            />
+            <MatchCard 
+              team1="RSC Wasquehal"
+              team2="SCRA"
+              team1Score="4"
+              team2Score="2"
+              team1Logo=""
+              team2Logo=""
+              date="2023-03-05"
+              category="U20"
+              exterieur={false}
+            />
+            <MatchCard 
+              team1="RSC Wasquehal"
+              team2="SCRA"
+              team1Score="4"
+              team2Score="2"
+              team1Logo=""
+              team2Logo=""
+              date="2023-03-05"
+              category="U20"
+              exterieur={true}
+            />
+            <MatchCard 
+              team1="RSC Wasquehal"
+              team2="SCRA"
+              team1Score="4"
+              team2Score="2"
+              team1Logo=""
+              team2Logo=""
+              date="2023-03-05"
+              category="U20"
+              exterieur={true}
+            />
+            <MatchCard 
+              team1="RSC Wasquehal"
+              team2="SCRA"
+              team1Score="4"
+              team2Score="2"
+              team1Logo=""
+              team2Logo=""
+              date="2023-03-05"
+              category="U20"
+              exterieur={true}
+            />
+            <MatchCard 
+              team1="RSC Wasquehal"
+              team2="SCRA"
+              team1Score="4"
+              team2Score="2"
+              team1Logo=""
+              team2Logo=""
+              date="2023-03-05"
+              category="U20"
+              exterieur={true}
+            />
+
+          </Carousel> */}
 
 
 

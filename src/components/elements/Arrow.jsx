@@ -1,6 +1,7 @@
-export function Arrow({ direction })
+"use client";
+export function Arrow({ direction, ...props })
 {
-    return <div className={`arrow ${direction}`}>
+    return <div className={`arrow ${direction}`} {...props}>
         {direction === 'left' && 
             <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path className="path-fill" opacity="0.5" d="M22.2591 9.96875C22.5234 9.96875 22.7769 9.86376 22.9638 9.67687C23.1507 9.48999 23.2556 9.23652 23.2556 8.97222C23.2556 8.70793 23.1507 8.45446 22.9638 8.26757C22.7769 8.08069 22.5234 7.9757 22.2591 7.9757V9.96875ZM22.2591 7.9757L0.999878 7.9757L0.999878 9.96875L22.2591 9.96875V7.9757Z" fill="white"/>
