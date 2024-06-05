@@ -12,7 +12,9 @@ import "@/styles/css/style.css";
 // import "../scripts/elements/scroll.js";
 
 // Components
-
+import { Header } from "@/components/layouts/Header";
+import { Footer } from "@/components/layouts/Footer";
+import { Scroll } from "@/components/Scroll";
 
 
 
@@ -29,9 +31,17 @@ export default function RootLayout({
 
   console.log(children);
 
-  return <>
-    {children}
-  </>
-    
-  
+  return (
+    <html lang="en">
+      <head>
+        
+      </head>
+      <body className="">
+        <Header />
+        {children}
+        <Footer />
+        <Scroll />
+      </body>
+    </html>
+  );
 }
