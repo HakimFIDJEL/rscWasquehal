@@ -26,14 +26,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+
 import {
   Tabs,
   TabsContent,
@@ -48,19 +41,39 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
   } from "@/components/ui/breadcrumb"
+import { DataTable } from "@/components/ui/data-table"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-
 export const metadata = {
-    title: 'RSC Admin - Tableau de bord',
+  title: 'RSC Admin - Tableau de bord',
 };
 
+import { columns } from "./columns"
+
+
 export default function Dashboard() {
+  
+
+  type Data = {
+    id: string
+    image: string
+    title: string
+    status: string
+    created_at: string
+  }[];
+
+
+  const data: Data = [
+    {
+      id: "1",
+      image: "/placeholder.svg",
+      title: "Le titre de l'actualité",
+      status: "En ligne",
+      created_at: "2023-07-12 10:42 AM",
+    }
+  ];
+
   return (
-    
-
-
-
     <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
       <div className="flex items-center">
             <h1 className="text-lg font-semibold md:text-2xl">Actualités</h1>
@@ -96,91 +109,16 @@ export default function Dashboard() {
         </div>
       </div>
       <TabsContent value="all">
-        <Card x-chunk="dashboard-06-chunk-0">
-          <CardHeader>
-            <CardTitle>Les actualités</CardTitle>
-            <CardDescription>
-              Retrouvez ici toutes les actualités de votre site
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="hidden md:table-cell">
-                    ID
-                  </TableHead>
-                  <TableHead className="hidden w-[100px] sm:table-cell">
-                    Image
-                  </TableHead>
-                  <TableHead>Titre</TableHead>
-                  <TableHead>Statut</TableHead>
-                  <TableHead className="hidden md:table-cell">
-                    Créé le
-                  </TableHead>
-                  <TableHead>Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="font-medium">
-                    #1
-                  </TableCell>
-                  <TableCell className=" sm:table-cell">
-                    <Image
-                      alt="Product image"
-                      className="aspect-square rounded-md object-cover"
-                      height="64"
-                      src="/placeholder.svg"
-                      width="64"
-                    />
-                  </TableCell>
-                  <TableCell className="font-medium">
-                    Le titre de l'actualité
-                  </TableCell>
-                  <TableCell>
-                    <Badge>En ligne</Badge>
-                  </TableCell>
-                  <TableCell className="hidden md:table-cell">
-                    2023-07-12 10:42 AM
-                  </TableCell>
-                  <TableCell>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          aria-haspopup="true"
-                          size="icon"
-                          variant="ghost"
-                        >
-                          <MoreHorizontal className="h-4 w-4" />
-                          <span className="sr-only">Toggle menu</span>
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <Link href="/admin/actualites/edit">
-                          <DropdownMenuItem>
-                            Modifier
-                          </DropdownMenuItem>
-                        </Link>
-                        <DropdownMenuItem>
-                          Supprimer
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </TableCell>
-                </TableRow>
-                
-              </TableBody>
-            </Table>
-          </CardContent>
-          <CardFooter>
-            <div className="text-xs text-muted-foreground">
-              Showing <strong>1-10</strong> of <strong>32</strong>{" "}
-              products
-            </div>
-          </CardFooter>
-        </Card>
+        
+        <DataTable
+          title="Les actualités"
+          subtitle="Retrouvez ici toutes les actualités de votre site"
+          columns={columns}
+          data={data}
+        />
+          
+            
+          
       </TabsContent>
     </Tabs>
 
