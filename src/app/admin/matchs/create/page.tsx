@@ -34,6 +34,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+
+
 import { Textarea } from "@/components/ui/textarea"
 import {
   ToggleGroup,
@@ -59,7 +61,18 @@ import {
     BreadcrumbSeparator,
   } from "@/components/ui/breadcrumb"
 import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  SheetClose,
+  SheetFooter,
+} from "@/components/ui/sheet"
+
+
 export const metadata = {
   title: 'RSC Admin - Tableau de bord',
 };
@@ -92,7 +105,7 @@ export default function Create() {
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
-                    <Link href="/admin/actualites">Actualités</Link>
+                    <Link href="/admin/actualites">Matchs</Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
@@ -109,7 +122,7 @@ export default function Create() {
                 </Button>
               </Link>
               <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
-                Créer une actualité
+                Créer un match
               </h1>
               <div className="hidden items-center gap-2 md:ml-auto md:flex">
                 {/* <Button variant="outline" size="sm">
@@ -127,7 +140,7 @@ export default function Create() {
               <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
                 <Card x-chunk="dashboard-07-chunk-0">
                   <CardHeader>
-                    <CardTitle>Détails de l'actualité</CardTitle>
+                    <CardTitle>Détails du match</CardTitle>
                     <CardDescription>
                       Lipsum dolor sit amet, consectetur adipiscing elit.
                     </CardDescription>
@@ -135,21 +148,66 @@ export default function Create() {
                   <CardContent>
                     <div className="grid gap-6">
                       <div className="grid gap-3">
-                        <Label htmlFor="name">Titre</Label>
-                        <Input
-                          id="name"
-                          type="text"
-                          className="w-full"
-                          placeholder="Le titre de l'actualité"
-                        />
+                        <Label htmlFor="name">Equipe adverse</Label>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Theme" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="light">Equipe 1</SelectItem>
+                            <SelectItem value="dark">Equipe 2</SelectItem>
+                            <SelectItem value="system">Equipe 3</SelectItem>
+                          </SelectContent>
+                        </Select>
                       </div>
                       <div className="grid gap-3">
-                        <Label htmlFor="description">Description</Label>
-                        <Textarea
-                          id="description"
-                          placeholder="La description de l'actualité"
-                          className="min-h-32 max-h-56"
-                        />
+
+                      <Sheet>
+                        <SheetTrigger asChild>
+                          <Button variant="default" size="sm">
+                            Ajouter une équipe
+                          </Button>
+                        </SheetTrigger>
+                        <SheetContent>
+                          <SheetHeader>
+                            <SheetTitle>Ajouter une équipe</SheetTitle>
+                            <SheetDescription>
+                              Ajouter une équipe à la liste des équipes
+                            </SheetDescription>
+                          </SheetHeader>
+                          <div className="grid gap-4 py-4">
+                            <div className="grid  gap-4">
+                              <Label htmlFor="name">
+                                Nom de l'équipe
+                              </Label>
+                              <Input id="name" value="Pedro Duarte" className="col-span-3" />
+                            </div>
+                            <div className="grid gap-4">
+                              <Label htmlFor="username">
+                                Logo de l'équipe
+                              </Label>
+                              <button className="flex py-4 w-full items-center justify-center rounded-md border border-dashed">
+                                <Upload className="h-4 w-4 text-muted-foreground" />
+                                <span className="sr-only">Upload</span>
+                              </button>
+                            </div>
+                          </div>
+                          <SheetFooter>
+                            <SheetClose asChild>
+                              <Button type="submit">Ajouter l'équipe</Button>
+                            </SheetClose>
+                          </SheetFooter>
+                        </SheetContent>
+                      </Sheet>
+
+                        
+
+
+
+                        <Button variant="secondary" size="sm">
+                          Supprimer l'équipe sélectionnée
+                        </Button>
+                        
                       </div>
                     </div>
                   </CardContent>
