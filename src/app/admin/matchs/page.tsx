@@ -56,9 +56,11 @@ export default function Index() {
 
   type Data = {
     id: string
-    image: string
-    title: string
-    status: string
+    opponent: string
+    category: string
+    score1: number
+    score2: number
+    location: string
     created_at: string
   }[];
 
@@ -66,17 +68,19 @@ export default function Index() {
   const data: Data = [
     {
       id: "1",
-      image: "/placeholder.svg",
-      title: "Le titre de l'actualité",
-      status: "En ligne",
-      created_at: "2023-07-12 10:42 AM",
+      opponent: "FC Nantes",
+      category: "U15",
+      score1: 2,
+      score2: 1,
+      location: "Domicile",
+      created_at: "2021-09-12",
     }
   ];
 
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-      {/* <div className="flex items-center">
-            <h1 className="text-lg font-semibold md:text-2xl">Actualités</h1>
+          {/* <div className="flex items-center">
+            <h1 className="text-lg font-semibold md:text-2xl">Matchs</h1>
           </div> */}
           <Breadcrumb className="hidden md:flex">
             <BreadcrumbList>
@@ -87,7 +91,7 @@ export default function Index() {
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage>Actualités</BreadcrumbPage>
+                <BreadcrumbPage>Matchs</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
@@ -102,7 +106,7 @@ export default function Index() {
             <Button size="sm" className="h-8 gap-1">
               <PlusCircle className="h-3.5 w-3.5" />
               <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                Ajouter une actualité
+                Ajouter un match
               </span>
             </Button>
           </Link>
@@ -111,8 +115,8 @@ export default function Index() {
       <TabsContent value="all">
         
         <DataTable
-          title="Les actualités"
-          subtitle="Retrouvez ici toutes les actualités de votre site"
+          title="Les matchs"
+          subtitle="Retrouvez ici tous les matchs de votre site"
           columns={columns}
           data={data}
         />
