@@ -56,11 +56,9 @@ export default function Index() {
 
   type Data = {
     id: string
-    opponent: string
-    category: string
-    score1: number
-    score2: number
-    location: string
+    title: string
+    src: string
+    status: string
     created_at: string
   }[];
 
@@ -68,11 +66,9 @@ export default function Index() {
   const data: Data = [
     {
       id: "1",
-      opponent: "FC Nantes",
-      category: "U15",
-      score1: 2,
-      score2: 1,
-      location: "Domicile",
+      title: "Image 1",
+      src: "",
+      status: "En ligne",
       created_at: "2021-09-12",
     }
   ];
@@ -91,7 +87,7 @@ export default function Index() {
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage>Matchs</BreadcrumbPage>
+                <BreadcrumbPage>Galerie</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
@@ -102,11 +98,11 @@ export default function Index() {
         
         <div className="ml-auto flex items-center gap-2">
           
-          <Link href="/admin/matchs/create">
+          <Link href="/admin/galerie/create">
             <Button size="sm" className="h-8 gap-1">
               <PlusCircle className="h-3.5 w-3.5" />
               <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                Ajouter un match
+                Ajouter une image
               </span>
             </Button>
           </Link>
@@ -115,8 +111,8 @@ export default function Index() {
       <TabsContent value="all">
         
         <DataTable
-          title="Les matchs"
-          subtitle="Retrouvez ici tous les matchs de votre site"
+          title="La galerie de votre site"
+          subtitle="Retrouvez ici toutes les images de votre site"
           columns={columns}
           data={data}
         />

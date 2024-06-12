@@ -72,6 +72,7 @@ import {
   SheetFooter,
 } from "@/components/ui/sheet"
 
+import { Separator } from "@/components/ui/separator"
 
 export const metadata = {
   title: 'RSC Admin - Tableau de bord',
@@ -105,7 +106,7 @@ export default function Create() {
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
-                    <Link href="/admin/actualites">Matchs</Link>
+                    <Link href="/admin/matchs">Matchs</Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
@@ -115,7 +116,7 @@ export default function Create() {
               </BreadcrumbList>
             </Breadcrumb>
             <div className="flex items-center gap-4">
-              <Link href="/admin/actualites">
+              <Link href="/admin/matchs">
                 <Button variant="outline" size="icon" className="h-7 w-7">
                   <ChevronLeft className="h-4 w-4" />
                   <span className="sr-only">Retour</span>
@@ -138,11 +139,91 @@ export default function Create() {
             </div>
             <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
               <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
-                <Card x-chunk="dashboard-07-chunk-0">
+
+              <Card x-chunk="dashboard-07-chunk-3">
                   <CardHeader>
                     <CardTitle>Détails du match</CardTitle>
                     <CardDescription>
-                      Lipsum dolor sit amet, consectetur adipiscing elit.
+                      <Separator className="mt-2" />
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid gap-6 mt-2">
+
+                      <div className="flex justify-between gap-6">
+                        <div className="grid gap-3 w-full">
+                          <Label htmlFor="name">Score allié</Label>
+                          <Input id="name" placeholder="score" />
+                        </div>
+                        <div className="grid gap-3 w-full">
+                          <Label htmlFor="name">Score adverse</Label>
+                          <Input id="name" placeholder="score" />
+                        </div>
+                      </div>
+                      <div className="grid gap-3">
+                        <Label htmlFor="name">Date du match</Label>
+                        <Input id="name" type="datetime-local" />
+                      </div>
+                      <div className="grid gap-3">
+                        <Label htmlFor="name">Lieu du match</Label>
+                        <Select>
+                          <SelectTrigger id="status" aria-label="Localisation">
+                            <SelectValue placeholder="Localisation" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="domicile">Domicile</SelectItem>
+                            <SelectItem value="exterieur">Extérieur</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      {/* Catégorie */}
+                      <div className="grid gap-3">
+                        <Label htmlFor="name">Catégorie</Label>
+                        <Input id="name" placeholder="Catégorie" disabled value="U20"/>
+                      </div>
+
+                    </div>
+                  </CardContent>
+                </Card>
+
+
+               
+
+                
+               
+               
+              </div>
+              <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
+                
+                <Card x-chunk="dashboard-07-chunk-4">
+                  <CardHeader className="pr-12">
+                    <CardTitle>Statut du match</CardTitle>
+                    <CardDescription>
+                      <Separator className="mt-2" />
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid gap-6">
+                      <div className="grid gap-3">
+                        <Select>
+                          <SelectTrigger id="status" aria-label="Sélectionner le statut">
+                            <SelectValue placeholder="Sélectionner le statut" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="online">En ligne</SelectItem>
+                            <SelectItem value="offline">Hors ligne</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card x-chunk="dashboard-07-chunk-0">
+                  <CardHeader>
+                    <CardTitle>Détails de l'équipe</CardTitle>
+                    <CardDescription>
+                      <Separator className="mt-2" />
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -162,7 +243,7 @@ export default function Create() {
                       </div>
                       <div className="grid gap-3">
 
-                      <Sheet>
+                      <Sheet key="sheet-1">
                         <SheetTrigger asChild>
                           <Button variant="default" size="sm">
                             Ajouter une équipe
@@ -172,20 +253,16 @@ export default function Create() {
                           <SheetHeader>
                             <SheetTitle>Ajouter une équipe</SheetTitle>
                             <SheetDescription>
-                              Ajouter une équipe à la liste des équipes
+                              <Separator className="mt-2" />
                             </SheetDescription>
                           </SheetHeader>
                           <div className="grid gap-4 py-4">
-                            <div className="grid  gap-4">
-                              <Label htmlFor="name">
-                                Nom de l'équipe
-                              </Label>
-                              <Input id="name" value="Pedro Duarte" className="col-span-3" />
+                            <div className="grid gap-4">
+                              <Label htmlFor="name-1">Nom de l'équipe</Label>
+                              <Input id="name-1" value="Pedro Duarte" className="col-span-3" />
                             </div>
                             <div className="grid gap-4">
-                              <Label htmlFor="username">
-                                Logo de l'équipe
-                              </Label>
+                              <Label htmlFor="logo-1">Logo de l'équipe</Label>
                               <button className="flex py-4 w-full items-center justify-center rounded-md border border-dashed">
                                 <Upload className="h-4 w-4 text-muted-foreground" />
                                 <span className="sr-only">Upload</span>
@@ -194,79 +271,63 @@ export default function Create() {
                           </div>
                           <SheetFooter>
                             <SheetClose asChild>
-                              <Button type="submit">Ajouter l'équipe</Button>
+                                <Button type="submit" size="sm" className="w-full mt-4">
+                                  Ajouter l'équipe
+                                </Button>
+                            </SheetClose>
+                          </SheetFooter>
+                        </SheetContent>
+                      </Sheet>
+
+                      <Sheet key="sheet-2">
+                        <SheetTrigger asChild>
+                          <Button type="submit" variant="secondary" size="sm">
+                            Modifier l'équipe
+                          </Button>
+                        </SheetTrigger>
+                        <SheetContent>
+                          <SheetHeader>
+                            <SheetTitle>Modifier une équipe</SheetTitle>
+                            <SheetDescription>
+                              <Separator className="mt-2" />
+                            </SheetDescription>
+                          </SheetHeader>
+                          <div className="grid gap-4 py-4">
+                            <div className="grid gap-4">
+                              <Label htmlFor="name-2">Nom de l'équipe</Label>
+                              <Input id="name-2" value="Pedro Duarte" className="col-span-3" />
+                            </div>
+                            <div className="grid gap-4">
+                              <Label htmlFor="logo-2">Logo de l'équipe</Label>
+                              <button className="flex py-4 w-full items-center justify-center rounded-md border border-dashed">
+                                <Upload className="h-4 w-4 text-muted-foreground" />
+                                <span className="sr-only">Upload</span>
+                              </button>
+                            </div>
+                          </div>
+                          <SheetFooter>
+                            <SheetClose asChild>
+                                <div className="grid gap-4 py-4 w-full">
+                                  <Button type="submit" className="w-full" size="sm">
+                                    Modifier l'équipe
+                                  </Button>
+                                  <Button type="submit" variant="destructive" className="w-full" size="sm">
+                                    Supprimer l'équipe
+                                  </Button>
+
+                                </div>
                             </SheetClose>
                           </SheetFooter>
                         </SheetContent>
                       </Sheet>
 
                         
-
-
-
-                        <Button variant="secondary" size="sm">
-                          Supprimer l'équipe sélectionnée
-                        </Button>
                         
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card x-chunk="dashboard-07-chunk-3">
-                  <CardHeader>
-                    <CardTitle>Statut de l'actualité</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid gap-6">
-                      <div className="grid gap-3">
-                        <Select>
-                          <SelectTrigger id="status" aria-label="Sélectionner le statut">
-                            <SelectValue placeholder="Sélectionner le statut" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="online">En ligne</SelectItem>
-                            <SelectItem value="offline">Hors ligne</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-               
-               
-              </div>
-              <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
-                
-                <Card
-                  className="overflow-hidden" x-chunk="dashboard-07-chunk-4"
-                >
-                  <CardHeader>
-                    <CardTitle>Les images de l'actualité</CardTitle>
-                    <CardDescription>
-                      Lipsum dolor sit amet, consectetur adipiscing elit.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid gap-2">
-                      <div className="grid grid-cols-3 gap-2">
-                        {/* <button>
-                          <Image
-                            alt="Product image"
-                            className="aspect-square w-full rounded-md object-cover"
-                            height="84"
-                            src="/placeholder.svg"
-                            width="84"
-                          />
-                        </button> */}
-                        <button className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
-                          <Upload className="h-4 w-4 text-muted-foreground" />
-                          <span className="sr-only">Upload</span>
-                        </button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
                 
               </div>
             </div>
