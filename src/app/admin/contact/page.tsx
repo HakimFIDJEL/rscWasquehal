@@ -56,11 +56,9 @@ export default function Index() {
 
   type Data = {
     id: string
-    opponent: string
-    category: string
-    score1: number
-    score2: number
-    location: string
+    name: string
+    email: string
+    message: string
     created_at: string
   }[];
 
@@ -68,11 +66,9 @@ export default function Index() {
   const data: Data = [
     {
       id: "1",
-      opponent: "FC Nantes",
-      category: "U15",
-      score1: 2,
-      score2: 1,
-      location: "Domicile",
+      name: "John Doe",
+      email: "",
+      message: "Hello, I would like to know more about your club",
       created_at: "2021-09-12",
     }
   ];

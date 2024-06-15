@@ -65,7 +65,9 @@ export function DataTable<TData, TValue>({
             <div>
               <CardTitle>{title}</CardTitle>
               <CardDescription>
-                {subtitle}
+                <div className="text-sm text-gray-500 mt-1">
+                  {subtitle}
+                </div>
               </CardDescription>
             </div>
             <Input

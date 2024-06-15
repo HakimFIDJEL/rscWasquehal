@@ -19,11 +19,11 @@ import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 // You can use a Zod schema here if you want.
 export type data = {
     id: string
-    opponent: string
+    image: string
+    status: string
+    name: string
+    website: string
     category: string
-    score1: number
-    score2: number
-    location: string
     created_at: string
 }
 
@@ -57,39 +57,49 @@ export const columns: ColumnDef<data>[] = [
         ),
     },
     {
-        accessorKey: "opponent",
-        header: "Adversaire",
+        accessorKey: "image",
+        header: "Image",
+        cell: ({ cell }) => (
+            <Image
+                alt="Product image"
+                className="aspect-square rounded-md object-cover"
+                height="64"
+                src={cell.getValue<string>()}
+                width="64"
+            />
+        ),
     },
     {
         accessorKey: "status",
         header: "Statut",
         cell: ({ cell }) => (
-            // place a badge with a success, danger or warning color depending on the results, calculated from the score
-            <Badge
-                variant={cell.row.original.score1 > cell.row.original.score2 ? "default" : cell.row.original.score1 < cell.row.original.score2 ? "destructive" : "secondary"}
-            >
-                {cell.row.original.score1 > cell.row.original.score2 ? "Victoire" : cell.row.original.score1 < cell.row.original.score2 ? "Défaite" : "Match nul"}
+            // if status == 1, say online, else offline
+            <Badge variant={cell.getValue<string>() === "1" ? "default" : "secondary"}>
+                {cell.getValue<string>() === "1" ? "En ligne" : "Hors ligne"}
             </Badge>
-            
+        ),
+    },
+    {
+        accessorKey: "name",
+        header: "Nom",
+    },
+    {
+        accessorKey: "website",
+        header: "Site Web",
+        cell: ({ cell }) => (
+            <a
+                className="text-blue-600 hover:underline"
+                href={cell.getValue<string>()}
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                {cell.getValue<string>()}
+            </a>
         ),
     },
     {
         accessorKey: "category",
         header: "Catégorie",
-    },
-    {
-        accessorKey: "score",
-        header: "Score",
-        cell: ({ cell }) => (
-            // according to the location, if it's "Domicile" or "Extérieur", we display the score in the right order
-            <span>
-                {cell.row.original.location === "Domicile" ? `${cell.row.original.score1} - ${cell.row.original.score2}` : `${cell.row.original.score2} - ${cell.row.original.score1}`}
-            </span>
-        ),
-    },
-    {
-        accessorKey: "location",
-        header: "Lieu",
     },
     {
         accessorKey: "created_at",

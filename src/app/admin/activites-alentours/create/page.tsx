@@ -106,7 +106,7 @@ export default function Create() {
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
-                    <Link href="/admin/matchs">Matchs</Link>
+                    <Link href="/admin/actitivtes-alentours">Activités aux alentours</Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
@@ -123,7 +123,7 @@ export default function Create() {
                 </Button>
               </Link>
               <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
-                Créer un match
+                Créer un activité
               </h1>
               <div className="hidden items-center gap-2 md:ml-auto md:flex">
                 {/* <Button variant="outline" size="sm">
@@ -142,7 +142,7 @@ export default function Create() {
 
               <Card x-chunk="dashboard-07-chunk-3">
                   <CardHeader>
-                    <CardTitle>Détails du match</CardTitle>
+                    <CardTitle>Détails de l'activité</CardTitle>
                     <CardDescription>
                       <Separator className="mt-2" />
                     </CardDescription>
@@ -150,54 +150,39 @@ export default function Create() {
                   <CardContent>
                     <div className="grid gap-6 mt-2">
 
-                      <div className="flex justify-between gap-6">
-                        <div className="grid gap-3 w-full">
-                          <Label htmlFor="name">Score allié</Label>
-                          <Input id="name" placeholder="score" />
-                        </div>
-                        <div className="grid gap-3 w-full">
-                          <Label htmlFor="name">Score adverse</Label>
-                          <Input id="name" placeholder="score" />
-                        </div>
+                      <div className="grid gap-3">
+                        <Label htmlFor="name">Nom</Label>
+                        <Input id="name" placeholder="Ex: McDonald's" />
                       </div>
                       <div className="grid gap-3">
-                        <Label htmlFor="name">Date du match</Label>
-                        <Input id="name" type="datetime-local" />
+                        <Label htmlFor="name">Description</Label>
+                        <Textarea id="name" placeholder="Description" />
                       </div>
                       <div className="grid gap-3">
-                        <Label htmlFor="name">Lieu du match</Label>
-                        <Select>
-                          <SelectTrigger id="status" aria-label="Localisation">
-                            <SelectValue placeholder="Localisation" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="domicile">Domicile</SelectItem>
-                            <SelectItem value="exterieur">Extérieur</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        <Label htmlFor="name">Site Web</Label>
+                        <Input id="name" placeholder="https://mcdonalds.fr" />
                       </div>
-                      {/* Catégorie */}
+
                       <div className="grid gap-3">
                         <Label htmlFor="name">Catégorie</Label>
-                        <Input id="name" placeholder="Catégorie" disabled value="U20"/>
+                        <Select>
+                          <SelectTrigger id="status" aria-label="Catégorie">
+                            <SelectValue placeholder="Catégorie" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="domicile">Restaurant</SelectItem>
+                            <SelectItem value="exterieur">Station essence</SelectItem>
+                          </SelectContent>
+                        </Select>
                       </div>
 
                     </div>
                   </CardContent>
                 </Card>
 
-
-               
-
-                
-               
-               
-              </div>
-              <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
-                
                 <Card x-chunk="dashboard-07-chunk-4">
                   <CardHeader className="pr-12">
-                    <CardTitle>Statut du match</CardTitle>
+                    <CardTitle>Statut de l'activité</CardTitle>
                     <CardDescription>
                       <Separator className="mt-2" />
                     </CardDescription>
@@ -219,111 +204,41 @@ export default function Create() {
                   </CardContent>
                 </Card>
 
-                <Card x-chunk="dashboard-07-chunk-0">
+
+               
+
+                
+               
+               
+              </div>
+              <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
+                
+                
+
+                <Card
+                  className="overflow-hidden" x-chunk="dashboard-07-chunk-4"
+                >
                   <CardHeader>
-                    <CardTitle>Détails de l'équipe</CardTitle>
+                    <CardTitle>Image de l'activité</CardTitle>
                     <CardDescription>
                       <Separator className="mt-2" />
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid gap-6">
-                      <div className="grid gap-3">
-                        <Label htmlFor="name">Equipe adverse</Label>
-                        <Select>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Theme" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="light">Equipe 1</SelectItem>
-                            <SelectItem value="dark">Equipe 2</SelectItem>
-                            <SelectItem value="system">Equipe 3</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div className="grid gap-3">
-
-                      <Sheet key="sheet-1">
-                        <SheetTrigger asChild>
-                          <Button variant="default" size="sm">
-                            Ajouter une équipe
-                          </Button>
-                        </SheetTrigger>
-                        <SheetContent>
-                          <SheetHeader>
-                            <SheetTitle>Ajouter une équipe</SheetTitle>
-                            <SheetDescription>
-                              <Separator className="mt-2" />
-                            </SheetDescription>
-                          </SheetHeader>
-                          <div className="grid gap-4 py-4">
-                            <div className="grid gap-4">
-                              <Label htmlFor="name-1">Nom de l'équipe</Label>
-                              <Input id="name-1" value="Pedro Duarte" className="col-span-3" />
-                            </div>
-                            <div className="grid gap-4">
-                              <Label htmlFor="logo-1">Logo de l'équipe</Label>
-                              <button className="flex py-4 w-full items-center justify-center rounded-md border border-dashed">
-                                <Upload className="h-4 w-4 text-muted-foreground" />
-                                <span className="sr-only">Upload</span>
-                              </button>
-                            </div>
-                          </div>
-                          <SheetFooter>
-                            <SheetClose asChild>
-                                <Button type="submit" size="sm" className="w-full mt-4">
-                                  Ajouter l'équipe
-                                </Button>
-                            </SheetClose>
-                          </SheetFooter>
-                        </SheetContent>
-                      </Sheet>
-
-                      <Sheet key="sheet-2">
-                        <SheetTrigger asChild>
-                          <Button type="submit" variant="secondary" size="sm">
-                            Modifier l'équipe
-                          </Button>
-                        </SheetTrigger>
-                        <SheetContent>
-                          <SheetHeader>
-                            <SheetTitle>Modifier une équipe</SheetTitle>
-                            <SheetDescription>
-                              <Separator className="mt-2" />
-                            </SheetDescription>
-                          </SheetHeader>
-                          <div className="grid gap-4 py-4">
-                            <div className="grid gap-4">
-                              <Label htmlFor="name-2">Nom de l'équipe</Label>
-                              <Input id="name-2" value="Pedro Duarte" className="col-span-3" />
-                            </div>
-                            <div className="grid gap-4">
-                              <Label htmlFor="logo-2">Logo de l'équipe</Label>
-                              <button className="flex py-4 w-full items-center justify-center rounded-md border border-dashed">
-                                <Upload className="h-4 w-4 text-muted-foreground" />
-                                <span className="sr-only">Upload</span>
-                              </button>
-                            </div>
-                          </div>
-                          <SheetFooter>
-                            <SheetClose asChild>
-                                <div className="grid gap-4 py-4 w-full">
-                                  <Button type="submit" className="w-full" size="sm">
-                                    Modifier l'équipe
-                                  </Button>
-                                  <Button type="submit" variant="destructive" className="w-full" size="sm">
-                                    Supprimer l'équipe
-                                  </Button>
-
-                                </div>
-                            </SheetClose>
-                          </SheetFooter>
-                        </SheetContent>
-                      </Sheet>
-
-                        
-                        
-                      </div>
+                    <div className="grid gap-2">
+                        {/* <button>
+                          <Image
+                            alt="Product image"
+                            className="aspect-square w-full rounded-md object-cover"
+                            height="84"
+                            src="/placeholder.svg"
+                            width="84"
+                          />
+                        </button> */}
+                        <button className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
+                          <Upload className="h-4 w-4 text-muted-foreground" />
+                          <span className="sr-only">Upload</span>
+                        </button>
                     </div>
                   </CardContent>
                 </Card>

@@ -75,7 +75,10 @@ export const columns: ColumnDef<data>[] = [
         accessorKey: "status",
         header: "Statut",
         cell: ({ cell }) => (
-            <Badge>{cell.getValue<string>()}</Badge>
+            // if status == 1, say online, else offline
+            <Badge variant={cell.getValue<string>() === "1" ? "default" : "secondary"}>
+                {cell.getValue<string>() === "1" ? "En ligne" : "Hors ligne"}
+            </Badge>
         ),
     },
     {
