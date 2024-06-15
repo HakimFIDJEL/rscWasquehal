@@ -21,6 +21,7 @@ import {
   Package,
   ShoppingCart,
   Users,
+  ContactRound ,
 } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -100,6 +101,13 @@ export default function AdminLayout({
               >
                 <Handshake className="h-4 w-4" />
                 Sponsors
+              </Link>
+              <Link
+                href="/admin/equipes"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <ContactRound className="h-4 w-4" />
+                Equipes
               </Link>
               <Link
                 href="/admin/activites-alentours"
@@ -187,6 +195,13 @@ export default function AdminLayout({
               >
                 <LineChart className="h-4 w-4" />
                 Sponsors
+              </Link>
+              <Link
+                href="/admin/equipes"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <ContactRound className="h-4 w-4" />
+                Equipes
               </Link>
               <Link
                 href="#"

@@ -150,19 +150,6 @@ export default function Create() {
                   <CardContent>
                     <div className="grid gap-6 mt-2">
 
-                      {/* Catégorie */}
-                      <div className="grid gap-3">
-                        <Label htmlFor="name">Catégorie</Label>
-                        <Select>
-                          <SelectTrigger id="status" aria-label="Catégorie">
-                            <SelectValue placeholder="Catégorie" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="online">U20</SelectItem>
-                            <SelectItem value="offline">U17</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
                       <div className="flex justify-between gap-6">
                         <div className="grid gap-3 w-full">
                           <Label htmlFor="name">Score allié</Label>
@@ -189,7 +176,11 @@ export default function Create() {
                           </SelectContent>
                         </Select>
                       </div>
-                      
+                      {/* Catégorie */}
+                      <div className="grid gap-3">
+                        <Label htmlFor="name">Catégorie</Label>
+                        <Input id="name" placeholder="Catégorie" disabled value="U20"/>
+                      </div>
 
                     </div>
                   </CardContent>
