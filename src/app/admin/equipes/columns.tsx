@@ -13,6 +13,18 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+  } from "@/components/ui/alert-dialog"
+
 import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 
 // This type is used to define the shape of our data.
@@ -103,29 +115,32 @@ export const columns: ColumnDef<data>[] = [
         accessorKey: "actions",
         header: "Actions",
         cell: ({ row }) => (
-            <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                    <Button
-                        aria-haspopup="true"
-                        size="icon"
-                        variant="ghost"
-                    >
-                        <MoreHorizontal className="h-4 w-4" />
-                        <span className="sr-only">Toggle menu</span>
-                    </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                    <Link href={`/admin/actualites/edit/${row.original.id}`}>
-                        <DropdownMenuItem>
-                            Modifier
-                        </DropdownMenuItem>
-                    </Link>
-                    <DropdownMenuItem>
-                        Supprimer
-                    </DropdownMenuItem>
-                </DropdownMenuContent>
-            </DropdownMenu>
+            <div className="flex gap-2">
+                <Link href={`/admin/equipes/${row.original.id}`}>
+                    <span className="cursor-pointer underline">
+                        Modifier    
+                    </span>
+                </Link>
+                <AlertDialog>
+                    <AlertDialogTrigger>
+                        <span className="cursor-pointer underline">
+                            Supprimer
+                        </span>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                        <AlertDialogTitle>Êtes vous sûr ?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            Vous êtes sur le point de supprimer cet élément. Cette action est irréversible.
+                        </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                        <AlertDialogCancel>Annuler</AlertDialogCancel>
+                        <AlertDialogAction>Oui, supprimer !</AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
+            </div>
         ),
 
     },

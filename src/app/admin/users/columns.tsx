@@ -22,8 +22,19 @@ import {
     DialogTrigger,
   } from "@/components/ui/dialog"
 
-  
-import { ArrowUpDown, MoreHorizontal, FileText, Trash2   } from "lucide-react"
+  import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+  } from "@/components/ui/alert-dialog"
+
+import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -31,7 +42,6 @@ export type data = {
     id: string
     name: string
     email: string
-    message: string
     created_at: string
 }
 
@@ -67,16 +77,18 @@ export const columns: ColumnDef<data>[] = [
     {
         accessorKey: "name",
         header: "Nom",
+        cell: ({ cell }) => (
+            <span>{cell.getValue<string>()}</span>
+        ),
     },
     {
         accessorKey: "email",
-        header: "Mail",
+        header: "Email",
         cell: ({ cell }) => (
-            <a href={`mailto:${cell.getValue<string>()}`} className="text-blue-500">
-                {cell.getValue<string>()}
-            </a>
+            <span>{cell.getValue<string>()}</span>
         ),
     },
+    
     {
         accessorKey: "created_at",
         // sortable
@@ -100,26 +112,30 @@ export const columns: ColumnDef<data>[] = [
         header: "Actions",
         cell: ({ row }) => (
             <div className="flex gap-2">
-                <Dialog>
-                    <DialogTrigger>
+                <Link href={`/admin/users/${row.original.id}`}>
+                    <span className="cursor-pointer underline">
+                        Modifier    
+                    </span>
+                </Link>
+                <AlertDialog>
+                    <AlertDialogTrigger>
                         <span className="cursor-pointer underline">
-                            Consulter
+                            Supprimer
                         </span>
-                    </DialogTrigger>
-                    <DialogContent>
-                        <DialogHeader>
-                        <DialogTitle>Contenu du message</DialogTitle>
-                        <DialogDescription>
-                            {row.original.message}
-                        </DialogDescription>
-                        </DialogHeader>
-                    </DialogContent>
-                </Dialog>
-                <span className="cursor-pointer underline">
-                    Supprimer
-                </span>
-
-            
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                        <AlertDialogTitle>Êtes vous sûr ?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            Vous êtes sur le point de supprimer cet élément. Cette action est irréversible.
+                        </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                        <AlertDialogCancel>Annuler</AlertDialogCancel>
+                        <AlertDialogAction>Oui, supprimer !</AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
             </div>
         ),
 

@@ -42,12 +42,6 @@ import {
 import { Label } from "@/components/ui/label"
 
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
 
 
 import {
@@ -71,7 +65,7 @@ export const metadata = {
 };
 
 
-export default function Create() {
+export default function Edit() {
   
 
 
@@ -135,7 +129,7 @@ export default function Create() {
                   <CardHeader>
                     <CardTitle>Détails de l'actualité</CardTitle>
                     <CardDescription>
-                      Renseignez les informations de l'actualité
+                      Lipsum dolor sit amet, consectetur adipiscing elit.
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -146,7 +140,7 @@ export default function Create() {
                           id="name"
                           type="text"
                           className="w-full"
-                          placeholder="Ex: Le club a remporté le championnat"
+                          placeholder="Le titre de l'actualité"
                         />
                       </div>
                       <div className="grid gap-3">
@@ -207,20 +201,10 @@ export default function Create() {
                             width="84"
                           />
                         </button> */}
-                        <TooltipProvider>
-                        <Tooltip>
-                          <TooltipTrigger>
-                            <span className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
-                              <Upload className="h-4 w-4 text-muted-foreground" />
-                              <span className="sr-only">Upload</span>
-                            </span>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p>Ajouter une image</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                        
+                        <button className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
+                          <Upload className="h-4 w-4 text-muted-foreground" />
+                          <span className="sr-only">Upload</span>
+                        </button>
                       </div>
                     </div>
                   </CardContent>
