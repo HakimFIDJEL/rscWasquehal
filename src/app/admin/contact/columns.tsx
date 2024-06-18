@@ -13,17 +13,25 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 
-import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog"
+
+  
+import { ArrowUpDown, MoreHorizontal, FileText, Trash2   } from "lucide-react"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 export type data = {
     id: string
-    opponent: string
-    category: string
-    score1: number
-    score2: number
-    location: string
+    name: string
+    email: string
+    message: string
     created_at: string
 }
 
@@ -57,39 +65,17 @@ export const columns: ColumnDef<data>[] = [
         ),
     },
     {
-        accessorKey: "opponent",
-        header: "Adversaire",
+        accessorKey: "name",
+        header: "Nom",
     },
     {
-        accessorKey: "status",
-        header: "Statut",
+        accessorKey: "email",
+        header: "Mail",
         cell: ({ cell }) => (
-            // place a badge with a success, danger or warning color depending on the results, calculated from the score
-            <Badge
-                variant={cell.row.original.score1 > cell.row.original.score2 ? "default" : cell.row.original.score1 < cell.row.original.score2 ? "destructive" : "secondary"}
-            >
-                {cell.row.original.score1 > cell.row.original.score2 ? "Victoire" : cell.row.original.score1 < cell.row.original.score2 ? "Défaite" : "Match nul"}
-            </Badge>
-            
+            <a href={`mailto:${cell.getValue<string>()}`} className="text-blue-500">
+                {cell.getValue<string>()}
+            </a>
         ),
-    },
-    {
-        accessorKey: "category",
-        header: "Catégorie",
-    },
-    {
-        accessorKey: "score",
-        header: "Score",
-        cell: ({ cell }) => (
-            // according to the location, if it's "Domicile" or "Extérieur", we display the score in the right order
-            <span>
-                {cell.row.original.location === "Domicile" ? `${cell.row.original.score1} - ${cell.row.original.score2}` : `${cell.row.original.score2} - ${cell.row.original.score1}`}
-            </span>
-        ),
-    },
-    {
-        accessorKey: "location",
-        header: "Lieu",
     },
     {
         accessorKey: "created_at",
@@ -113,29 +99,27 @@ export const columns: ColumnDef<data>[] = [
         accessorKey: "actions",
         header: "Actions",
         cell: ({ row }) => (
-            <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                    <Button
-                        aria-haspopup="true"
-                        size="icon"
-                        variant="ghost"
-                    >
-                        <MoreHorizontal className="h-4 w-4" />
-                        <span className="sr-only">Toggle menu</span>
-                    </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                    <Link href={`/admin/actualites/edit/${row.original.id}`}>
-                        <DropdownMenuItem>
-                            Modifier
-                        </DropdownMenuItem>
-                    </Link>
-                    <DropdownMenuItem>
-                        Supprimer
-                    </DropdownMenuItem>
-                </DropdownMenuContent>
-            </DropdownMenu>
+            <div className="flex gap-2">
+                <Dialog>
+                    <DialogTrigger>
+                        <Button variant="secondary" size="sm">
+                            <FileText  />
+                        </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>
+                        <DialogTitle>Contenu du message</DialogTitle>
+                        <DialogDescription>
+                            {row.original.message}
+                        </DialogDescription>
+                        </DialogHeader>
+                    </DialogContent>
+                </Dialog>
+                <Button variant="destructive" size="sm">
+                    <Trash2   />
+                </Button>
+            
+            </div>
         ),
 
     },

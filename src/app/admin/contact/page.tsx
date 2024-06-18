@@ -67,7 +67,7 @@ export default function Index() {
     {
       id: "1",
       name: "John Doe",
-      email: "",
+      email: "john@doe.fr",
       message: "Hello, I would like to know more about your club",
       created_at: "2021-09-12",
     }
@@ -87,7 +87,7 @@ export default function Index() {
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage>Matchs</BreadcrumbPage>
+                <BreadcrumbPage>Contact</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
@@ -96,23 +96,13 @@ export default function Index() {
     <Tabs defaultValue="all">
       <div className="flex items-center">
         
-        <div className="ml-auto flex items-center gap-2">
-          
-          <Link href="/admin/matchs/create">
-            <Button size="sm" className="h-8 gap-1">
-              <PlusCircle className="h-3.5 w-3.5" />
-              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                Ajouter un match
-              </span>
-            </Button>
-          </Link>
-        </div>
+        
       </div>
       <TabsContent value="all">
         
         <DataTable
-          title="Les matchs"
-          subtitle="Retrouvez ici tous les matchs de votre site"
+          title="Les contacts"
+          subtitle="Retrouvez ici tous les contacts de votre site"
           columns={columns}
           data={data}
         />
