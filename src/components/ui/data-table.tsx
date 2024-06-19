@@ -17,6 +17,8 @@ import { Input } from "@/components/ui/input"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import * as React from "react"
 
+import { Separator } from "@/components/ui/separator"
+
 import {
   Table,
   TableBody,

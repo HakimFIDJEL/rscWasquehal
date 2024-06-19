@@ -22,8 +22,32 @@ import {
     DialogTrigger,
   } from "@/components/ui/dialog"
 
+  import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+  } from "@/components/ui/alert-dialog"
   
-import { ArrowUpDown, MoreHorizontal, FileText, Trash2   } from "lucide-react"
+  
+  import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+  } from "@/components/ui/tooltip"
+
+import { Separator } from "@/components/ui/separator"
+
+import { ArrowUpDown, MoreHorizontal, Trash2, Settings2, FileImage, FileText  } from "lucide-react"
+
+
+  
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -61,7 +85,8 @@ export const columns: ColumnDef<data>[] = [
             )
           },
         cell: ({ cell }) => (
-            <span>#{cell.getValue<string>()}</span>
+            <span className="pl-4"
+            >#{cell.getValue<string>()}</span>
         ),
     },
     {
@@ -95,31 +120,49 @@ export const columns: ColumnDef<data>[] = [
             <span>{formatDate(cell.getValue<string>())}</span>
         ),
     },
+
     {
         accessorKey: "actions",
         header: "Actions",
         cell: ({ row }) => (
             <div className="flex gap-2">
                 <Dialog>
-                    <DialogTrigger>
-                        <span className="cursor-pointer underline">
-                            Consulter
-                        </span>
+                    <DialogTrigger asChild>
+                        <Button variant="secondary" size="sm">
+                            <FileText />
+                        </Button>
                     </DialogTrigger>
                     <DialogContent>
                         <DialogHeader>
                         <DialogTitle>Contenu du message</DialogTitle>
                         <DialogDescription>
+                            <Separator className="mt-2 mb-4" />
                             {row.original.message}
                         </DialogDescription>
                         </DialogHeader>
                     </DialogContent>
                 </Dialog>
-                <span className="cursor-pointer underline">
-                    Supprimer
-                </span>
-
-            
+                <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                        
+                            <Button variant="default" size="sm">
+                                <Trash2 />
+                            </Button>
+                          
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                        <AlertDialogTitle>Êtes vous sûr ?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            Vous êtes sur le point de supprimer cet élément. Cette action est irréversible.
+                        </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                        <AlertDialogCancel>Annuler</AlertDialogCancel>
+                        <AlertDialogAction>Oui, supprimer !</AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
             </div>
         ),
 

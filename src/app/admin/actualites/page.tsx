@@ -66,9 +66,9 @@ export default function Index() {
   const data: Data = [
     {
       id: "1",
-      image: "/placeholder.svg",
+      image: "",
       title: "Le titre de l'actualité",
-      status: "En ligne",
+      status: "1",
       created_at: "2023-07-12 10:42 AM",
     }
   ];

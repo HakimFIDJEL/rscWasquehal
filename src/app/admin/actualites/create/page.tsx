@@ -14,6 +14,8 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
+import { Separator } from "@/components/ui/separator"
+
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
@@ -135,7 +137,7 @@ export default function Create() {
                   <CardHeader>
                     <CardTitle>Détails de l'actualité</CardTitle>
                     <CardDescription>
-                      Renseignez les informations de l'actualité
+                      <Separator className="mt-2" />
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -164,6 +166,9 @@ export default function Create() {
                 <Card x-chunk="dashboard-07-chunk-3">
                   <CardHeader>
                     <CardTitle>Statut de l'actualité</CardTitle>
+                    <CardDescription>
+                      <Separator className="mt-2" />
+                    </CardDescription>  
                   </CardHeader>
                   <CardContent>
                     <div className="grid gap-6">
@@ -192,7 +197,7 @@ export default function Create() {
                   <CardHeader>
                     <CardTitle>Les images de l'actualité</CardTitle>
                     <CardDescription>
-                      Lipsum dolor sit amet, consectetur adipiscing elit.
+                      <Separator className="mt-2" />
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -209,7 +214,7 @@ export default function Create() {
                         </button> */}
                         <TooltipProvider>
                         <Tooltip>
-                          <TooltipTrigger>
+                          <TooltipTrigger asChild>
                             <span className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
                               <Upload className="h-4 w-4 text-muted-foreground" />
                               <span className="sr-only">Upload</span>

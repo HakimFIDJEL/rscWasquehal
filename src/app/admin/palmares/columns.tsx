@@ -25,7 +25,15 @@ import {
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
 
-import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+   
+  import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+  } from "@/components/ui/tooltip"
+
+  import { ArrowUpDown, MoreHorizontal, Trash2, Settings2, FileImage  } from "lucide-react"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -65,7 +73,19 @@ export const columns: ColumnDef<data>[] = [
             )
           },
         cell: ({ cell }) => (
-            <span>#{cell.getValue<string>()}</span>
+            <span className="pl-4"
+            >#{cell.getValue<string>()}</span>
+        ),
+    },
+    {
+        accessorKey: "status",
+        header: "Statut",
+        cell: ({ cell }) => (
+            cell.getValue<string>() === "1" ? (
+                <Badge variant="default">En ligne</Badge>
+            ) : (
+                <Badge variant="secondary">Hors ligne</Badge>
+            )
         ),
     },
     {
@@ -82,16 +102,6 @@ export const columns: ColumnDef<data>[] = [
     {
         accessorKey: "title",
         header: "Titre",
-    },
-    {
-        accessorKey: "status",
-        header: "Statut",
-        cell: ({ cell }) => (
-            <Badge >
-                {cell.getValue<string>()}
-            </Badge>
-            
-        ),
     },
     {
         accessorKey: "category",
@@ -121,15 +131,26 @@ export const columns: ColumnDef<data>[] = [
         cell: ({ row }) => (
             <div className="flex gap-2">
                 <Link href={`/admin/palmares/${row.original.id}`}>
-                    <span className="cursor-pointer underline">
-                        Modifier    
-                    </span>
+                    <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button variant="secondary" size="sm">
+                                <Settings2 />
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Modifier</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                 </Link>
                 <AlertDialog>
-                    <AlertDialogTrigger>
-                        <span className="cursor-pointer underline">
-                            Supprimer
-                        </span>
+                    <AlertDialogTrigger asChild>
+                        
+                            <Button variant="default" size="sm">
+                                <Trash2 />
+                            </Button>
+                          
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                         <AlertDialogHeader>

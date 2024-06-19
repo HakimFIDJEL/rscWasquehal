@@ -40,7 +40,7 @@ export default function AdminLayout({
 
 
   return (
-    <html lang="fr">
+    <html lang="fr" className="light">
       <head>
         
       </head>

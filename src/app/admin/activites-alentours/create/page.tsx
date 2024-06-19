@@ -72,6 +72,15 @@ import {
   SheetFooter,
 } from "@/components/ui/sheet"
 
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+
+
 import { Separator } from "@/components/ui/separator"
 
 export const metadata = {
@@ -160,7 +169,7 @@ export default function Create() {
                       </div>
                       <div className="grid gap-3">
                         <Label htmlFor="name">Site Web</Label>
-                        <Input id="name" placeholder="https://mcdonalds.fr" />
+                        <Input id="name" placeholder="Ex: https://mcdonalds.fr" />
                       </div>
 
                       <div className="grid gap-3">
@@ -180,29 +189,7 @@ export default function Create() {
                   </CardContent>
                 </Card>
 
-                <Card x-chunk="dashboard-07-chunk-4">
-                  <CardHeader className="pr-12">
-                    <CardTitle>Statut de l'activité</CardTitle>
-                    <CardDescription>
-                      <Separator className="mt-2" />
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid gap-6">
-                      <div className="grid gap-3">
-                        <Select>
-                          <SelectTrigger id="status" aria-label="Sélectionner le statut">
-                            <SelectValue placeholder="Sélectionner le statut" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="online">En ligne</SelectItem>
-                            <SelectItem value="offline">Hors ligne</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                
 
 
                
@@ -235,10 +222,43 @@ export default function Create() {
                             width="84"
                           />
                         </button> */}
-                        <button className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
-                          <Upload className="h-4 w-4 text-muted-foreground" />
-                          <span className="sr-only">Upload</span>
-                        </button>
+                        <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <span className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
+                              <Upload className="h-4 w-4 text-muted-foreground" />
+                              <span className="sr-only">Upload</span>
+                            </span>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Ajouter une image</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card x-chunk="dashboard-07-chunk-4">
+                  <CardHeader className="pr-12">
+                    <CardTitle>Statut de l'activité</CardTitle>
+                    <CardDescription>
+                      <Separator className="mt-2" />
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid gap-6">
+                      <div className="grid gap-3">
+                        <Select>
+                          <SelectTrigger id="status" aria-label="Sélectionner le statut">
+                            <SelectValue placeholder="Sélectionner le statut" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="online">En ligne</SelectItem>
+                            <SelectItem value="offline">Hors ligne</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>

@@ -24,8 +24,16 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
+  
+  
+  import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+  } from "@/components/ui/tooltip"
 
-import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+  import { ArrowUpDown, MoreHorizontal, Trash2, Settings2, FileImage  } from "lucide-react"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -63,36 +71,47 @@ export const columns: ColumnDef<data>[] = [
             )
           },
         cell: ({ cell }) => (
-            <span>#{cell.getValue<string>()}</span>
+            <span className="pl-4"
+            >#{cell.getValue<string>()}</span>
+        ),
+    },
+    {
+        accessorKey: "status",
+        header: "Statut",
+        cell: ({ cell }) => (
+            cell.getValue<string>() === "1" ? (
+                <Badge variant="default">En ligne</Badge>
+            ) : (
+                <Badge variant="secondary">Hors ligne</Badge>
+            )
         ),
     },
     {
         accessorKey: "image",
         header: "Image",
         cell: ({ cell }) => (
-            <Image
-                alt="Product image"
-                className="aspect-square rounded-md object-cover"
-                height="64"
-                src={cell.getValue<string>()}
-                width="64"
-            />
+            // if there is a link, display it, if it's empty or null, display a placeholder
+            cell.getValue<string>() ? (
+                <Image
+                    src={cell.getValue<string>()}
+                    alt="Actualité"
+                    width={50}
+                    height={50}
+                    className="rounded-lg"
+                />
+            ) : (
+                <div className="flex items-center justify-center w-10 h-10 border rounded-lg">
+                    <FileImage />
+                </div>
+            )
+
         ),
     },
     {
         accessorKey: "category",
         header: "Catégorie",
     },
-    {
-        accessorKey: "status",
-        header: "Statut",
-        cell: ({ cell }) => (
-            // if status == 1, say online, else offline
-            <Badge variant={cell.getValue<string>() === "1" ? "default" : "secondary"}>
-                {cell.getValue<string>() === "1" ? "En ligne" : "Hors ligne"}
-            </Badge>
-        ),
-    },
+    
     {
         accessorKey: "created_at",
         // sortable
@@ -117,15 +136,26 @@ export const columns: ColumnDef<data>[] = [
         cell: ({ row }) => (
             <div className="flex gap-2">
                 <Link href={`/admin/equipes/${row.original.id}`}>
-                    <span className="cursor-pointer underline">
-                        Modifier    
-                    </span>
+                    <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button variant="secondary" size="sm">
+                                <Settings2 />
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Modifier</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                 </Link>
                 <AlertDialog>
-                    <AlertDialogTrigger>
-                        <span className="cursor-pointer underline">
-                            Supprimer
-                        </span>
+                    <AlertDialogTrigger asChild>
+                        
+                            <Button variant="default" size="sm">
+                                <Trash2 />
+                            </Button>
+                          
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                         <AlertDialogHeader>

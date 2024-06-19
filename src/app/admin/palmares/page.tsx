@@ -72,7 +72,7 @@ export default function Index() {
       season: "2021-2022",
       title: "Championnat",
       category: "U13",
-      status: "En ligne",
+      status: "1",
       created_at: "2021-07-12T10:42:00",
     }
   ];

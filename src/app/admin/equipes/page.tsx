@@ -66,7 +66,7 @@ export default function Index() {
   const data: Data = [
     {
       id: "1",
-      image: "/placeholder.svg",
+      image: "",
       category: "U20",
       status: "En ligne",
       created_at: "2023-07-12 10:42 AM",

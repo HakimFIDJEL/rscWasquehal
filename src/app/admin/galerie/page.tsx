@@ -68,7 +68,7 @@ export default function Index() {
       id: "1",
       title: "Image 1",
       src: "",
-      status: "En ligne",
+      status: "1",
       created_at: "2021-09-12",
     }
   ];

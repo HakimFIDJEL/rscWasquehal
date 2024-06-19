@@ -69,7 +69,7 @@ export default function Index() {
       id: "1",
       status: "1",
       name: "Adidas",
-      logo: "/images/sponsors/adidas.png",
+      logo: "",
       website: "https://adidas.com",
       created_at: "2021-09-12",
     }

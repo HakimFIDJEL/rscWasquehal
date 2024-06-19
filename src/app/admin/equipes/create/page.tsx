@@ -63,7 +63,13 @@ import {
   SheetClose,
   SheetFooter,
 } from "@/components/ui/sheet"
-
+  
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { Separator } from "@/components/ui/separator"
 import { Switch } from "@/components/ui/switch"
 import {
@@ -167,7 +173,7 @@ export default function Create() {
                   <CardHeader>
                     <CardTitle>Détails de l'équipe</CardTitle>
                     <CardDescription>
-                      Lipsum dolor sit amet, consectetur adipiscing elit.
+                    <Separator className="mt-2" />
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -196,7 +202,7 @@ export default function Create() {
 
                         <Sheet key="sheet-add">
                           <SheetTrigger asChild>
-                            <Button variant="secondary" size="sm">
+                            <Button variant="outline" size="sm">
                               Ajouter un joueur
                             </Button>
                           </SheetTrigger>
@@ -237,7 +243,7 @@ export default function Create() {
                       
                     </CardTitle>
                     <CardDescription>
-                      Lipsum dolor sit amet, consectetur adipiscing elit.
+                    <Separator className="mt-2" />
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -270,7 +276,7 @@ export default function Create() {
                               {/* sheet */}
                               <Sheet key="sheet-edit">
                                 <SheetTrigger asChild>
-                                  <Button variant="ghost" size="sm">
+                                  <Button variant="secondary" size="sm">
                                     <Settings2 className="h-4 w-4" />
                                   </Button>
                                 </SheetTrigger>
@@ -345,26 +351,26 @@ export default function Create() {
                   <CardHeader>
                     <CardTitle>L'image de l'équipe</CardTitle>
                     <CardDescription>
-                      Lipsum dolor sit amet, consectetur adipiscing elit.
+                      <Separator className="mt-2" />
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="grid gap-2">
-                      <div className="grid grid-cols-3 gap-2">
-                        {/* <button>
-                          <Image
-                            alt="Product image"
-                            className="aspect-square w-full rounded-md object-cover"
-                            height="84"
-                            src="/placeholder.svg"
-                            width="84"
-                          />
-                        </button> */}
-                        <button className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
-                          <Upload className="h-4 w-4 text-muted-foreground" />
-                          <span className="sr-only">Upload</span>
-                        </button>
-                      </div>
+                    <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
+                              <Upload className="h-4 w-4 text-muted-foreground" />
+                              <span className="sr-only">Upload</span>
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Ajouter une image</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                        
+                      
                     </div>
                   </CardContent>
                 </Card>
@@ -372,6 +378,9 @@ export default function Create() {
                 <Card x-chunk="dashboard-07-chunk-3">
                   <CardHeader>
                     <CardTitle>Statut de l'équipe</CardTitle>
+                    <CardDescription>
+                      <Separator className="mt-2" />
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="grid gap-6">
