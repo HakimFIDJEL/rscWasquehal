@@ -22,10 +22,12 @@ import {
   ShoppingCart,
   Users,
   ContactRound ,
+  CalendarDays,
 } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 
@@ -124,12 +126,21 @@ export default function AdminLayout({
                 Contact
               </Link>
               <Link
+                href="/admin/calendar"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <CalendarDays className="h-4 w-4" />
+                Calendrier
+              </Link>
+              <Separator className="my-4" />
+              <Link
                 href="/admin/users"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Users className="h-4 w-4" />
                 Administrateurs
               </Link>
+              
             </nav>
           </div>
           
@@ -218,7 +229,15 @@ export default function AdminLayout({
                 Contact
               </Link>
               <Link
-                href="#"
+                href="/admin/calendar"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <CalendarDays className="h-4 w-4" />
+                Calendrier
+              </Link>
+              <Separator className="my-4" />
+              <Link
+                href="/admin/users"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Users className="h-4 w-4" />
