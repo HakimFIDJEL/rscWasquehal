@@ -112,4 +112,19 @@ export class UsersService {
           return { status: 'error', message: error.message };
         }
     }
+
+    // authenticate
+    async authenticate(email: string, password: string): Promise<{ status: string, message: string }> {
+      const user = await this.usersRepository.findOne({ where: { email } });
+      if (!user) {
+        return { status: 'error', message: 'Utilisateur non trouvé' };
+      }
+  
+      const passwordMatch = await bcrypt.compare(password, user.password);
+      if (!passwordMatch) {
+        return { status: 'error', message: 'Mot de passe incorrect' };
+      }
+  
+      return { status: 'success', message: "L'utilisateur a été authentifié avec succès" };
+    }
 }

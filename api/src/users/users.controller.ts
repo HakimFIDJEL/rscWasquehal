@@ -18,6 +18,13 @@ export class UsersController {
     return this.usersService.findOne(+id); 
   }
 
+  // Authenticate user
+  @Post('authenticate')
+  async authenticate(@Body() body: { email: string, password: string }): Promise<{ status: string, message: string }> {
+    const { email, password } = body;
+    return this.usersService.authenticate(email, password);
+  }
+
   // Create one user
   @Post()
   create(@Body() user: User): Promise<{ status: string, message: string }>  {
@@ -35,4 +42,6 @@ export class UsersController {
   remove(@Param('id') id: string): Promise<{ status: string, message: string }>  {
     return this.usersService.remove(+id); 
   }
+
+  
 }
