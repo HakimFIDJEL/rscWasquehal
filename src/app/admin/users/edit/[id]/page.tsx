@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -37,13 +38,33 @@ import { useToast } from "@/components/ui/use-toast"
 
 import axios from 'axios';
 
-export default function Create() {
+export default function Edit({ params }: {params : { id: number | string }}) 
+{
+
+
   
   const uploadButtonRef = useRef<HTMLButtonElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordConfirmRef = useRef<HTMLInputElement>(null);
 
   const { toast } = useToast();
+
+
+  const GetUser = () => {
+    axios.get(`http://localhost:4000/users/${params.id}`)
+    .then((response) => {
+      const user = response.data;
+      (document.getElementById('name') as HTMLInputElement).value = user.name;
+      (document.getElementById('email') as HTMLInputElement).value = user.email;
+    })
+    .catch((error) => {
+      toast({
+        variant: 'destructive',
+        description: error.response?.data?.message || error.message,
+        duration: 3000
+      });
+    });
+  }
 
   const handlePasswordChange = () => {
     if(passwordRef.current?.value !== passwordConfirmRef.current?.value) {
@@ -61,7 +82,7 @@ export default function Create() {
     const passwordConfirm = passwordConfirmRef.current?.value;
     
     // Champs non vides
-    if(!name || !email || !password || !passwordConfirm) {
+    if(!name || !email) {
       toast({
         variant: "destructive",
         description: "Veuillez remplir tous les champs",
@@ -71,14 +92,17 @@ export default function Create() {
     }
 
     // Mot de passe valide
-    if(password !== passwordConfirm) {
-      passwordConfirmRef.current?.classList.add('border-red-500');
-      toast({
-        variant: "destructive",
-        description: "Les mots de passe ne correspondent pas",
-        duration: 3000        
-      })
-      return;
+    if(password || passwordConfirm) {
+
+      if(password !== passwordConfirm) {
+        passwordConfirmRef.current?.classList.add('border-red-500');
+        toast({
+          variant: "destructive",
+          description: "Les mots de passe ne correspondent pas",
+          duration: 3000        
+        })
+        return;
+      }
     }
 
     // Si le mail est au format valide
@@ -94,10 +118,10 @@ export default function Create() {
 
 
     // use axios to send data to server
-    axios.post('http://localhost:4000/users', { name, email, password })
+    axios.post(`http://localhost:4000/users/${params.id}`, { name, email, password })
     .then((response) => {
         if (response.data.status === 'success') {
-            window.location.href = '/admin/users?status=createSuccess';
+            window.location.href = '/admin/users?status=editSuccess';
         } else {
             toast({
                 variant: 'destructive',
@@ -119,6 +143,10 @@ export default function Create() {
     
   }
   
+
+  useEffect(() => {
+    GetUser();
+  }, []);
 
 
 
@@ -144,7 +172,7 @@ export default function Create() {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Créer</BreadcrumbPage>
+                  <BreadcrumbPage>Modifier</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -156,7 +184,7 @@ export default function Create() {
                 </Button>
               </Link>
               <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
-                Créer un administrateur
+                Modifier un administrateur
               </h1>
               <div className="hidden items-center gap-2 md:ml-auto md:flex">
                 <Button size="sm" className="gap-1" ref={uploadButtonRef} onClick={handleSave}>
@@ -192,6 +220,10 @@ export default function Create() {
                 <Card x-chunk="dashboard-07-chunk-4">
                   <CardHeader className="pr-12">
                     <CardTitle>Confidentialité</CardTitle>
+                    
+                    <CardDescription>
+                    Le mot de passe est conservé si non modifié.
+                    </CardDescription>
                   </CardHeader>
                   <Separator className="mb-8" />
                   <CardContent>

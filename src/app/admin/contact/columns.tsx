@@ -135,6 +135,7 @@ export const columns: ColumnDef<data>[] = [
                     <DialogContent>
                         <DialogHeader>
                         <DialogTitle>Contenu du message</DialogTitle>
+                        
                         <DialogDescription>
                             <Separator className="mt-2 mb-4" />
                             {row.original.message}

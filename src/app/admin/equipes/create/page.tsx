@@ -122,7 +122,7 @@ export default function Create() {
 <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
 
   
-    <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">
+    <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4 pb-8">
 
       {/* margin top */}
 
@@ -172,10 +172,8 @@ export default function Create() {
                 <Card x-chunk="dashboard-07-chunk-0">
                   <CardHeader>
                     <CardTitle>Détails de l'équipe</CardTitle>
-                    <CardDescription>
-                    <Separator className="mt-2" />
-                    </CardDescription>
                   </CardHeader>
+                  <Separator className="mb-8" />
                   <CardContent>
                     <div className="grid gap-6">
                       <div className="grid gap-3">
@@ -242,10 +240,8 @@ export default function Create() {
                       </div>
                       
                     </CardTitle>
-                    <CardDescription>
-                    <Separator className="mt-2" />
-                    </CardDescription>
                   </CardHeader>
+                    <Separator className="mb-8" />
                   <CardContent>
                     <Table>
                       <TableHeader>
@@ -350,10 +346,8 @@ export default function Create() {
                 >
                   <CardHeader>
                     <CardTitle>L'image de l'équipe</CardTitle>
-                    <CardDescription>
-                      <Separator className="mt-2" />
-                    </CardDescription>
                   </CardHeader>
+                    <Separator className="mb-8" />
                   <CardContent>
                     <div className="grid gap-2">
                     <TooltipProvider>
@@ -378,10 +372,8 @@ export default function Create() {
                 <Card x-chunk="dashboard-07-chunk-3">
                   <CardHeader>
                     <CardTitle>Statut de l'équipe</CardTitle>
-                    <CardDescription>
-                      <Separator className="mt-2" />
-                    </CardDescription>
                   </CardHeader>
+                    <Separator className="mb-8" />
                   <CardContent>
                     <div className="grid gap-6">
                       <div className="grid gap-3">

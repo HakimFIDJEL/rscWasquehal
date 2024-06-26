@@ -143,10 +143,8 @@ export default function Create() {
               <Card x-chunk="dashboard-07-chunk-3">
                   <CardHeader>
                     <CardTitle>Détails du trophée</CardTitle>
-                    <CardDescription>
-                      <Separator className="mt-2" />
-                    </CardDescription>
                   </CardHeader>
+                  <Separator className="mb-8" />
                   <CardContent>
                     <div className="grid gap-6 mt-2">
 
@@ -191,10 +189,8 @@ export default function Create() {
                 <Card x-chunk="dashboard-07-chunk-4">
                   <CardHeader className="pr-12">
                     <CardTitle>Statut du trophée</CardTitle>
-                    <CardDescription>
-                      <Separator className="mt-2" />
-                    </CardDescription>
                   </CardHeader>
+                  <Separator className="mb-8" />
                   <CardContent>
                     <div className="grid gap-6">
                       <div className="grid gap-3">

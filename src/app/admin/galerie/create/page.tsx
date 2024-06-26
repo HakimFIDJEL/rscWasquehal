@@ -142,10 +142,8 @@ export default function Create() {
                 <Card x-chunk="dashboard-07-chunk-0">
                   <CardHeader>
                     <CardTitle>Détails de l'image</CardTitle>
-                    <CardDescription>
-                      <Separator className="mt-2" />
-                    </CardDescription>
                   </CardHeader>
+                  <Separator className="mb-8" />
                   <CardContent>
                     <div className="grid gap-6">
                       <div className="grid gap-3">
@@ -184,10 +182,8 @@ export default function Create() {
                 >
                   <CardHeader>
                     <CardTitle>L'image sélectionnée</CardTitle>
-                    <CardDescription>
-                      <Separator className="mt-2" />
-                    </CardDescription>
                   </CardHeader>
+                  <Separator className="mb-8" />
                   <CardContent>
                     <div className="grid gap-2">
                         {/* <button>

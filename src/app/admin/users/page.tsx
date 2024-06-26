@@ -1,38 +1,16 @@
-import Image from "next/image"
+"use client";
 import Link from "next/link"
 import {
-  File,
-  ListFilter,
-  MoreHorizontal,
   PlusCircle,
 } from "lucide-react"
 
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 
 import {
   Tabs,
   TabsContent,
-  TabsList,
-  TabsTrigger,
 } from "@/components/ui/tabs"
+
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -42,36 +20,83 @@ import {
     BreadcrumbSeparator,
   } from "@/components/ui/breadcrumb"
 import { DataTable } from "@/components/ui/data-table"
-import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-export const metadata = {
-  title: 'RSC Admin - Tableau de bord',
-};
 
 import { columns } from "./columns"
 
+import React, { useEffect, useState } from 'react';
+
+import axios from 'axios';
+import { Toaster } from "@/components/ui/toaster"
+import { useToast } from "@/components/ui/use-toast"
 
 export default function Index() {
   
+  const { toast } = useToast();
+  const [users, setUsers] = useState([]);
 
-  type Data = {
-    id: string
-    name: string
-    email: string
-    created_at: string
-  }[];
-
-
-  const data: Data = [
-    {
-      id: "1",
-      name: "John Doe",
-      email: "john@doe.fr",
-      created_at: "2021-07-12T10:42:00",
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get('http://localhost:4000/users');
+      setUsers(response.data);
+    } catch (error) {
+      console.error('Error fetching users:', error);
     }
-  ];
+  };
 
+  // Si l'url contient la clé status, on affiche un message en fonction de la valeur
+  const verifURL = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status');
+    if(status === 'createSuccess') {
+      toast({
+        description: "L'utilisateur a été créé avec succès",
+        duration: 3000  
+      })
+    }
+    else if (status === 'editSuccess') {
+      toast({
+        description: "L'utilisateur a été modifié avec succès",
+        duration: 3000,
+      })
+    }
+  }
+
+  const deleteUser = async (id: string | number) => {
+    try {
+      const response = await axios.delete(`http://localhost:4000/users/${id}`);
+      if (response.data.status === 'success') {
+        toast({
+          description: response.data.message,
+          duration: 3000
+        });
+        fetchUsers();
+      } else {
+        toast({
+          variant: 'destructive',
+          description: response.data.message,
+          duration: 3000
+        });
+      }
+    } catch (error) {
+      toast({
+        variant: 'destructive',
+        description: "Une erreur s'est produite lors de la suppression de l'utilisateur",
+        duration: 3000
+      });
+    }
+  };
+    
+
+
+  useEffect(() => {
+    fetchUsers();
+    verifURL();
+  }, []);
+  
+
+  
   return (
+    <>
     <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
           {/* <div className="flex items-center">
             <h1 className="text-lg font-semibold md:text-2xl">Matchs</h1>
@@ -111,8 +136,8 @@ export default function Index() {
         <DataTable
           title="Les administrateurs"
           subtitle="Retrouvez ici tous les administrateurs du site."
-          columns={columns}
-          data={data}
+          columns={columns(deleteUser)}
+          data={users}
         />
           
             
@@ -121,21 +146,8 @@ export default function Index() {
     </Tabs>
 
 
-    {/* Peut être utile */}
-    {/* <div
-      className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm" x-chunk="dashboard-02-chunk-1"
-    >
-      
-    </div> */}
-
-
-  </main>
-
-        
-
-
-
-
-      
+    </main>      
+    <Toaster />
+    </>
   )
 }

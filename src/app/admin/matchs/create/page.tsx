@@ -143,10 +143,8 @@ export default function Create() {
               <Card x-chunk="dashboard-07-chunk-3">
                   <CardHeader>
                     <CardTitle>Détails du match</CardTitle>
-                    <CardDescription>
-                      <Separator className="mt-2" />
-                    </CardDescription>
                   </CardHeader>
+                  <Separator className="mb-8" />
                   <CardContent>
                     <div className="grid gap-6 mt-2">
 
@@ -207,10 +205,8 @@ export default function Create() {
                 <Card x-chunk="dashboard-07-chunk-4">
                   <CardHeader className="pr-12">
                     <CardTitle>Statut du match</CardTitle>
-                    <CardDescription>
-                      <Separator className="mt-2" />
-                    </CardDescription>
                   </CardHeader>
+                  <Separator className="mb-8" />
                   <CardContent>
                     <div className="grid gap-6">
                       <div className="grid gap-3">
@@ -231,10 +227,8 @@ export default function Create() {
                 <Card x-chunk="dashboard-07-chunk-0">
                   <CardHeader>
                     <CardTitle>Détails de l'équipe</CardTitle>
-                    <CardDescription>
-                      <Separator className="mt-2" />
-                    </CardDescription>
                   </CardHeader>
+                  <Separator className="mb-8" />
                   <CardContent>
                     <div className="grid gap-6">
                       <div className="grid gap-3">
