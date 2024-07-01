@@ -34,11 +34,11 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 
 
-export default function AdminLayout({
+export default function AdminLayout  ({
   children,
 }: {
   children: React.ReactNode;
-}) {
+})  {
 
 
   return (

@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import * as bcrypt from 'bcrypt';
+import { JwtModule } from '@nestjs/jwt';
 
 
 @Injectable()
@@ -114,17 +115,17 @@ export class UsersService {
     }
 
     // authenticate
-    async authenticate(email: string, password: string): Promise<{ status: string, message: string }> {
+    async authenticate(email: string, password: string): Promise<User | boolean> {
       const user = await this.usersRepository.findOne({ where: { email } });
       if (!user) {
-        return { status: 'error', message: 'Utilisateur non trouvé' };
+        return false;
       }
   
       const passwordMatch = await bcrypt.compare(password, user.password);
       if (!passwordMatch) {
-        return { status: 'error', message: 'Mot de passe incorrect' };
+        return false;
       }
   
-      return { status: 'success', message: "L'utilisateur a été authentifié avec succès" };
+      return user;
     }
 }

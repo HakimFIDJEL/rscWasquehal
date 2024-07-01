@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link"
+import React from "react"
+import router from "next/router"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -36,7 +38,15 @@ export default function LoginForm() {
     try {
       const response = await axios.post('http://localhost:4000/users/authenticate', { email, password });
       if (response.data.status === 'success') {
-        alert('User authenticated successfully');
+
+        const token = response.data.access_token;
+        localStorage.setItem('authToken', token);
+
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+        router.push('/admin');
+
+
       } else {
         toast({
           variant: "destructive",
@@ -50,7 +60,6 @@ export default function LoginForm() {
         description: "Une erreur s'est produite lors de la connexion",
         duration: 3000  
       })
-      // Optionally display a toast notification
     }
   };
   
